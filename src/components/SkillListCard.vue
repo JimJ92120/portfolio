@@ -22,8 +22,8 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 
-import ImageList from "@/components/ImageList.vue";
-import IconList from "@/components/IconList.vue";
+import ImageList from "@/components/base/ImageList.vue";
+import IconList from "@/components/base/IconList.vue";
 
 export default defineComponent({
   name: "SkillListCard",

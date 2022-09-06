@@ -52,8 +52,8 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import FlagList from "@/components/FlagList.vue";
-import SocialLinkLinks from "@/components/SocialLinkList.vue";
+import FlagList from "@/components/base/FlagList.vue";
+import SocialLinkLinks from "@/components/base/SocialLinkList.vue";
 
 export default defineComponent({
   name: "ProfileCard",
