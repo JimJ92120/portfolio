@@ -12,7 +12,7 @@
             <h1>{ Hello World! }</h1>
             <v-container>
               <h2>{ About me }</h2>
-              <p>
+              <p style="white-space: pre-wrap">
                 {{ resumeData.description.about }}
               </p>
             </v-container>
