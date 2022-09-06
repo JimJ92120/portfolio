@@ -26,6 +26,10 @@
               <h2>{ Experiences }</h2>
               <ExperienceList :experiences="resumeData.experiences" />
             </v-container>
+            <v-container>
+              <h2>{ Education }</h2>
+              <EducationList :schools="resumeData.education" />
+            </v-container>
           </v-main>
         </v-col>
       </v-row>
@@ -40,6 +44,7 @@ import ProfileCard from "@/components/ProfileCard.vue";
 import SkillListCard from "@/components/SkillListCard.vue";
 import HobbiesListCard from "@/components/HobbiesListCard.vue";
 import ExperienceList from "@/components/ExperienceList.vue";
+import EducationList from "@/components/EducationList.vue";
 
 export default defineComponent({
   name: "App",
@@ -48,6 +53,7 @@ export default defineComponent({
     SkillListCard,
     HobbiesListCard,
     ExperienceList,
+    EducationList,
   },
   data() {
     return {

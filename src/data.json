@@ -168,5 +168,19 @@
       "period": "May 2021 - July 2022",
       "description": "Working with a team, I was able to work on different projects (from simple blogs to e-commerces) in which I had the opportunity to learn and work with various tools and technology (Gitflow with Gitlab, ReactJS, devops, etc).\nAs having a small leadership position, I've also helped to push other team members to grow their developer mindset and keep up to date with their stack and helped the company to lead some internal projects.\nAside, I supported company and team members to get up to date with new WordPress tools and workflow (Gutenberg, ReactJS, CI/CD, etc...), to make it a standard for new and future projects.\nThrough this experience and also the company's courses, I also grew some soft and hard skills such as problem solving, creativity, stakeholders management, communication, etc..."
     }
+  ],
+  "education": [
+    {
+      "school": "Lycée-Franco-Allemand",
+      "grade": "Middle- and High-school",
+      "period": "2004/2005 to 2012/2013",
+      "location": "Buc, France"
+    },
+    {
+      "school": "Deutsch-Französisches Gymnasium",
+      "grade": "High-school",
+      "period": "2009/2010",
+      "location": "Freiburg Im Breisgau, Germany"
+    }
   ]
 }
