@@ -34,6 +34,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import resumeData from "@/data.json";
+
 import ProfileCard from "@/components/ProfileCard.vue";
 import SkillListCard from "@/components/SkillListCard.vue";
 import HobbiesListCard from "@/components/HobbiesListCard.vue";
