@@ -13,7 +13,7 @@ import { defineComponent } from "vue";
 import IconList from "@/components/base/IconList.vue";
 
 export default defineComponent({
-  name: "SkillListCard",
+  name: "HobbiesListCard",
   components: {
     IconList,
   },
