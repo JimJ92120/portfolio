@@ -20,18 +20,16 @@
       <v-card-subtitle>Details:</v-card-subtitle>
       <v-list>
         <v-list-item>
-          <v-list-item-title>{{ profile.details.birthDate }}</v-list-item-title>
+          {{ profile.details.birthDate }}
         </v-list-item>
         <v-list-item>
-          <v-list-item-title>{{ profile.details.location }}</v-list-item-title>
+          {{ profile.details.location }}
         </v-list-item>
         <v-list-item>
-          <v-list-item-title>
-            <v-icon class="mr-2">mdi-email</v-icon>
-            <a :href="`mailto: ${profile.details.email}`">
-              {{ profile.details.email }}
-            </a>
-          </v-list-item-title>
+          <v-icon class="mr-2">mdi-email</v-icon>
+          <a :href="`mailto: ${profile.details.email}`">
+            {{ profile.details.email }}
+          </a>
         </v-list-item>
       </v-list>
     </v-card-text>
