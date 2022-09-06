@@ -8,12 +8,20 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, PropType } from "vue";
+
+type IconObject = {
+  title: string;
+  icon: string;
+};
 
 export default defineComponent({
   name: "IconList",
   props: {
-    icons: Object,
+    icons: {
+      type: Object as PropType<IconObject[]>,
+      required: true,
+    },
     isRow: {
       type: Boolean,
       default: false,
