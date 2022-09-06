@@ -22,5 +22,111 @@
         "icon": "mdi-linkedin"
       }
     }
+  },
+  "skills": {
+    "technologies": {
+      "languages": [
+        {
+          "title": "CSS3",
+          "path": "img/icons/tech/css3.svg"
+        },
+        {
+          "title": "HTML5",
+          "path": "img/icons/tech/html5.svg"
+        },
+        {
+          "title": "JS",
+          "path": "img/icons/tech/javascript.svg"
+        },
+        {
+          "title": "PHP",
+          "path": "img/icons/tech/php.svg"
+        },
+        {
+          "title": "TS",
+          "path": "img/icons/tech/typescript.svg"
+        },
+        {
+          "title": "SASS",
+          "path": "img/icons/tech/sass.svg"
+        },
+        {
+          "title": "Bash",
+          "path": "img/icons/tech/bash.svg"
+        }
+      ],
+      "others": [
+        {
+          "title": "WordPress",
+          "path": "img/icons/tech/wordpress.svg"
+        },
+        {
+          "title": "Woocommerce",
+          "path": "img/icons/tech/woocommerce.svg"
+        },
+        {
+          "title": "jQuery",
+          "path": "img/icons/tech/jquery.svg"
+        },
+        {
+          "title": "Bootstrap",
+          "path": "img/icons/tech/bootstrap.svg"
+        },
+        {
+          "title": "VueJS",
+          "path": "img/icons/tech/vuejs.svg"
+        },
+        {
+          "title": "ReactJS",
+          "path": "img/icons/tech/reactjs.svg"
+        },
+        {
+          "title": "StoryBook",
+          "path": "img/icons/tech/storybook.svg"
+        },
+        {
+          "title": "WebPack",
+          "path": "img/icons/tech/webpack.svg"
+        },
+        {
+          "title": "Composer",
+          "path": "img/icons/tech/composer.svg"
+        }
+      ]
+    },
+    "softSkills": [
+      {
+        "title": "Self-learning",
+        "icon": "mdi-bookshelf"
+      },
+      {
+        "title": "Critical thinking",
+        "icon": "mdi-head-cog-outline"
+      },
+      {
+        "title": "Problem solving",
+        "icon": "mdi-puzzle-outline"
+      },
+      {
+        "title": "Creativity",
+        "icon": "mdi-lightbulb-on-outline"
+      },
+      {
+        "title": "Accountability",
+        "icon": "mdi-account-multiple-check"
+      },
+      {
+        "title": "Helpfulness",
+        "icon": "mdi-handshake-outline"
+      },
+      {
+        "title": "Leadership",
+        "icon": "mdi-human-greeting"
+      },
+      {
+        "title": "Work ethic",
+        "icon": "mdi-scale-balance"
+      }
+    ]
   }
 }
