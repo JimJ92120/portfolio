@@ -3,12 +3,14 @@
     <v-timeline-item v-for="(experience, key) in experiences" :key="key">
       <template v-slot:opposite>
         <div class="text-h6 font-weight-bold">{{ experience.company }}</div>
+        <div class="text-subtitle font-weight-light">
+          {{ experience.period }}
+        </div>
       </template>
       <v-card>
         <v-card-title>
           {{ experience.position }}
         </v-card-title>
-        <v-card-subtitle>{{ experience.period }}</v-card-subtitle>
         <v-card-text style="white-space: pre-wrap" class="mt-3">
           {{ experience.description }}
         </v-card-text>
