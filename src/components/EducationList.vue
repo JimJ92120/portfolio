@@ -1,5 +1,5 @@
 <template>
-  <v-timeline side="end">
+  <v-timeline side="end" align="start" line-inset="12">
     <v-timeline-item v-for="(school, key) in schools" :key="key">
       <template v-slot:opposite>
         <div class="text-h6 font-weight-bold">{{ school.school }}</div>
