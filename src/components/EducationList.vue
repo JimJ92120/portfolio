@@ -1,6 +1,9 @@
 <template>
-  <v-list>
-    <v-list-item v-for="(school, key) in schools" :key="key">
+  <v-timeline side="end">
+    <v-timeline-item v-for="(school, key) in schools" :key="key">
+      <template v-slot:opposite>
+        <div class="text-h6 font-weight-bold">{{ school.school }}</div>
+      </template>
       <v-card>
         <v-card-title>{{ school.school }} | {{ school.grade }}</v-card-title>
         <v-card-subtitle>{{ school.period }}</v-card-subtitle>
@@ -8,8 +11,8 @@
           {{ school.location }}
         </v-card-subtitle>
       </v-card>
-    </v-list-item>
-  </v-list>
+    </v-timeline-item>
+  </v-timeline>
 </template>
 
 <script lang="ts">
