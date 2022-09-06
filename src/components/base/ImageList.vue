@@ -12,12 +12,20 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, PropType } from "vue";
+
+type ImageObject = {
+  title: string;
+  path: string;
+};
 
 export default defineComponent({
   name: "ImageList",
   props: {
-    images: Object,
+    images: {
+      type: Object as PropType<ImageObject[]>,
+      required: true,
+    },
     imageSize: {
       type: Number,
       default: 40,
