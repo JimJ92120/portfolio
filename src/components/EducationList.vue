@@ -5,7 +5,7 @@
         <div class="text-h6 font-weight-bold">{{ school.school }}</div>
       </template>
       <v-card>
-        <v-card-title>{{ school.school }} | {{ school.grade }}</v-card-title>
+        <v-card-title>{{ school.grade }}</v-card-title>
         <v-card-subtitle>{{ school.period }}</v-card-subtitle>
         <v-card-subtitle>
           {{ school.location }}
