@@ -7,6 +7,7 @@
         :alt="image.title"
         :lazy-src="image.path"
         :src="image.path"
+        :title="image.title"
       />
     </v-list-item>
   </v-list>
