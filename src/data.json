@@ -1,0 +1,26 @@
+{
+  "profile": {
+    "name": "Jim Joligeon",
+    "position": "Full Stack Developer",
+    "avatarUrl": "img/profile-image.jpg",
+    "details": {
+      "birthDate": "10-10-1995",
+      "location": "Ho Chi Minh City, Vietnam",
+      "email": "jim.joligeon@gmail.com"
+    },
+    "languages": [
+      "fr",
+      "gb"
+    ],
+    "links": {
+      "github": {
+        "url": "https://github.com/JimJ92120",
+        "icon": "mdi-github"
+      },
+      "linkedin": {
+        "url": "https://linkedin.com/in/jim-joligeon",
+        "icon": "mdi-linkedin"
+      }
+    }
+  }
+}
