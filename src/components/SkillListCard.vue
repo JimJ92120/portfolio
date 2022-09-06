@@ -4,13 +4,13 @@
       <v-card-title>Technologies</v-card-title>
 
       <v-card-subtitle>Languages:</v-card-subtitle>
-      <ImageList image-size="40" :images="skills.technologies.languages" />
+      <ImageList :images="skills.technologies.languages" />
 
       <v-card-subtitle class="mt-3">Others:</v-card-subtitle>
-      <ImageList image-size="40" :images="skills.technologies.others" />
+      <ImageList :images="skills.technologies.others" />
 
       <v-card-subtitle class="mt-3">Learning:</v-card-subtitle>
-      <ImageList image-size="40" :images="skills.technologies.learning" />
+      <ImageList :images="skills.technologies.learning" />
     </v-card-text>
 
     <v-divider></v-divider>

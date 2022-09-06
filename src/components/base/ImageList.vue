@@ -16,6 +16,12 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "ImageList",
-  props: ["images", "imageSize"],
+  props: {
+    images: Object,
+    imageSize: {
+      type: Number,
+      default: 40,
+    },
+  },
 });
 </script>

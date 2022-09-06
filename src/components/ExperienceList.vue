@@ -10,7 +10,7 @@
           {{ experience.description }}
         </v-card-text>
         <v-card-text>
-          <ImageList image-size="40" :images="experience.technologies" />
+          <ImageList :images="experience.technologies" />
         </v-card-text>
       </v-card>
     </v-list-item>
