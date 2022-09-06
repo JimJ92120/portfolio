@@ -17,12 +17,6 @@
               </p>
             </v-container>
             <v-container>
-              <h2>{ Objectives }</h2>
-              <p style="white-space: pre-wrap">
-                {{ resumeData.description.objectives }}
-              </p>
-            </v-container>
-            <v-container>
               <h2>{ Experiences }</h2>
               <ExperienceList :experiences="resumeData.experiences" />
             </v-container>
