@@ -26,86 +26,28 @@
   "skills": {
     "technologies": {
       "languages": [
-        {
-          "title": "CSS3",
-          "path": "img/icons/tech/css3.svg"
-        },
-        {
-          "title": "HTML5",
-          "path": "img/icons/tech/html5.svg"
-        },
-        {
-          "title": "JS",
-          "path": "img/icons/tech/javascript.svg"
-        },
-        {
-          "title": "PHP",
-          "path": "img/icons/tech/php.svg"
-        },
-        {
-          "title": "TS",
-          "path": "img/icons/tech/typescript.svg"
-        },
-        {
-          "title": "SASS",
-          "path": "img/icons/tech/sass.svg"
-        },
-        {
-          "title": "Bash",
-          "path": "img/icons/tech/bash.svg"
-        }
+        "css",
+        "html",
+        "javascript",
+        "php",
+        "typescript",
+        "sass"
       ],
       "others": [
-        {
-          "title": "WordPress",
-          "path": "img/icons/tech/wordpress.svg"
-        },
-        {
-          "title": "Woocommerce",
-          "path": "img/icons/tech/woocommerce.svg"
-        },
-        {
-          "title": "jQuery",
-          "path": "img/icons/tech/jquery.svg"
-        },
-        {
-          "title": "Bootstrap",
-          "path": "img/icons/tech/bootstrap.svg"
-        },
-        {
-          "title": "VueJS",
-          "path": "img/icons/tech/vuejs.svg"
-        },
-        {
-          "title": "ReactJS",
-          "path": "img/icons/tech/reactjs.svg"
-        },
-        {
-          "title": "StoryBook",
-          "path": "img/icons/tech/storybook.svg"
-        },
-        {
-          "title": "WebPack",
-          "path": "img/icons/tech/webpack.svg"
-        },
-        {
-          "title": "Composer",
-          "path": "img/icons/tech/composer.svg"
-        }
+        "wordpress",
+        "woocommerce",
+        "jquery",
+        "bootstrap",
+        "vuejs",
+        "reactjs",
+        "storybook",
+        "webpack",
+        "composer"
       ],
       "learning": [
-        {
-          "title": "Rust",
-          "path": "img/icons/tech/rust.svg"
-        },
-        {
-          "title": "Three.js",
-          "path": "img/icons/tech/threejs.svg"
-        },
-        {
-          "title": "Unity",
-          "path": "img/icons/tech/unity.svg"
-        }
+        "rust",
+        "threejs",
+        "unity"
       ]
     },
     "softSkills": [
@@ -175,66 +117,21 @@
       "period": "October 2019 - Present",
       "description": "As a freelancer, I had the opportunity to work on various projects and with different types of clients.\nThis gave me a decent experience that improved my expertise and also various solutions for the same problematic.\nI also was able to develop communication skills which is a must when running a project to ensure that the client is well understood.\nAside, I've also had the opportunity to learn about different aspects of a business, which helps assessing solutions and risks for a client.",
       "technologies": [
-        {
-          "title": "CSS3",
-          "path": "img/icons/tech/css3.svg"
-        },
-        {
-          "title": "JS",
-          "path": "img/icons/tech/javascript.svg"
-        },
-        {
-          "title": "PHP",
-          "path": "img/icons/tech/php.svg"
-        },
-        {
-          "title": "TS",
-          "path": "img/icons/tech/typescript.svg"
-        },
-        {
-          "title": "Python",
-          "path": "img/icons/tech/python.svg"
-        },
-        {
-          "title": "SASS",
-          "path": "img/icons/tech/sass.svg"
-        },
-        {
-          "title": "WordPress",
-          "path": "img/icons/tech/wordpress.svg"
-        },
-        {
-          "title": "Woocommerce",
-          "path": "img/icons/tech/woocommerce.svg"
-        },
-        {
-          "title": "jQuery",
-          "path": "img/icons/tech/jquery.svg"
-        },
-        {
-          "title": "Bootstrap",
-          "path": "img/icons/tech/bootstrap.svg"
-        },
-        {
-          "title": "VueJS",
-          "path": "img/icons/tech/vuejs.svg"
-        },
-        {
-          "title": "ReactJS",
-          "path": "img/icons/tech/reactjs.svg"
-        },
-        {
-          "title": "Ionic",
-          "path": "img/icons/tech/ionic.svg"
-        },
-        {
-          "title": "StoryBook",
-          "path": "img/icons/tech/storybook.svg"
-        },
-        {
-          "title": "WebPack",
-          "path": "img/icons/tech/webpack.svg"
-        }
+        "css",
+        "javascript",
+        "php",
+        "typescript",
+        "python",
+        "sass",
+        "wordpress",
+        "woocommerce",
+        "jquery",
+        "bootstrap",
+        "vuejs",
+        "reactjs",
+        "ionic",
+        "storybook",
+        "webpack"
       ]
     },
     {
@@ -243,54 +140,18 @@
       "period": "May 2021 - July 2022",
       "description": "Working with a team, I was able to work on different projects (from simple blogs to e-commerces) in which I had the opportunity to learn and work with various tools and technology (Gitflow with Gitlab, ReactJS, devops, etc).\nAs having a small leadership position, I've also helped to push other team members to grow their developer mindset and keep up to date with their stack and helped the company to lead some internal projects.\nAside, I supported company and team members to get up to date with new WordPress tools and workflow (Gutenberg, ReactJS, CI/CD, etc...), to make it a standard for new and future projects.\nThrough this experience and also the company's courses, I also grew some soft and hard skills such as problem solving, creativity, stakeholders management, communication, etc...",
       "technologies": [
-        {
-          "title": "CSS3",
-          "path": "img/icons/tech/css3.svg"
-        },
-        {
-          "title": "JS",
-          "path": "img/icons/tech/javascript.svg"
-        },
-        {
-          "title": "PHP",
-          "path": "img/icons/tech/php.svg"
-        },
-        {
-          "title": "SASS",
-          "path": "img/icons/tech/sass.svg"
-        },
-        {
-          "title": "Bash",
-          "path": "img/icons/tech/bash.svg"
-        },
-        {
-          "title": "WordPress",
-          "path": "img/icons/tech/wordpress.svg"
-        },
-        {
-          "title": "Woocommerce",
-          "path": "img/icons/tech/woocommerce.svg"
-        },
-        {
-          "title": "jQuery",
-          "path": "img/icons/tech/jquery.svg"
-        },
-        {
-          "title": "Bootstrap",
-          "path": "img/icons/tech/bootstrap.svg"
-        },
-        {
-          "title": "ReactJS",
-          "path": "img/icons/tech/reactjs.svg"
-        },
-        {
-          "title": "WebPack",
-          "path": "img/icons/tech/webpack.svg"
-        },
-        {
-          "title": "Composer",
-          "path": "img/icons/tech/composer.svg"
-        }
+        "css",
+        "javascript",
+        "php",
+        "sass",
+        "wordpress",
+        "woocommerce",
+        "jquery",
+        "bootstrap",
+        "reactjs",
+        "webpack",
+        "composer",
+        "bash"
       ]
     }
   ],

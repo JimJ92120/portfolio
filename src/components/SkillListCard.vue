@@ -6,17 +6,17 @@
       </template>
       <template v-slot:content>
         <v-card-subtitle>Languages:</v-card-subtitle>
-        <ImageList :images="skills.technologies.languages" />
+        <DevIconList :icon-slug-list="skills.technologies.languages" />
 
         <v-divider></v-divider>
 
         <v-card-subtitle class="mt-3">Others:</v-card-subtitle>
-        <ImageList :images="skills.technologies.others" />
+        <DevIconList :icon-slug-list="skills.technologies.others" />
 
         <v-divider></v-divider>
 
         <v-card-subtitle class="mt-3">Learning:</v-card-subtitle>
-        <ImageList :images="skills.technologies.learning" />
+        <DevIconList :icon-slug-list="skills.technologies.learning" />
       </template>
     </DropdownCard>
     <DropdownCard>
@@ -34,15 +34,15 @@
 import { defineComponent } from "vue";
 
 import DropdownCard from "@/components/base/DropdownCard.vue";
-import ImageList from "@/components/base/ImageList.vue";
 import IconList from "@/components/base/IconList.vue";
+import DevIconList from "@/components/base/DevIconList.vue";
 
 export default defineComponent({
   name: "SkillListCard",
   components: {
     DropdownCard,
-    ImageList,
     IconList,
+    DevIconList,
   },
   props: ["skills"],
 });

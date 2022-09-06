@@ -1,0 +1,86 @@
+{
+  "bash": {
+    "title": "Bash",
+    "path": "img/icons/tech/bash.svg"
+  },
+  "bootstrap": {
+    "title": "Bootstrap",
+    "path": "img/icons/tech/bootstrap.svg"
+  },
+  "css": {
+    "title": "CSS 3",
+    "path": "img/icons/tech/css3.svg"
+  },
+  "composer": {
+    "title": "Composer",
+    "path": "img/icons/tech/composer.svg"
+  },
+  "html": {
+    "title": "HTML 5",
+    "path": "img/icons/tech/html5.svg"
+  },
+  "ionic": {
+    "title": "Ionic",
+    "path": "img/icons/tech/ionic.svg"
+  },
+  "javascript": {
+    "title": "JavaScript",
+    "path": "img/icons/tech/javascript.svg"
+  },
+  "jquery": {
+    "title": "jQuery",
+    "path": "img/icons/tech/jquery.svg"
+  },
+  "php": {
+    "title": "PHP",
+    "path": "img/icons/tech/php.svg"
+  },
+  "python": {
+    "title": "Python",
+    "path": "img/icons/tech/python.svg"
+  },
+  "reactjs": {
+    "title": "ReactJS",
+    "path": "img/icons/tech/reactjs.svg"
+  },
+  "rust": {
+    "title": "Rust",
+    "path": "img/icons/tech/rust.svg"
+  },
+  "sass": {
+    "title": "SASS",
+    "path": "img/icons/tech/sass.svg"
+  },
+  "storybook": {
+    "title": "StoryBook",
+    "path": "img/icons/tech/storybook.svg"
+  },
+  "threejs": {
+    "title": "Three.js",
+    "path": "img/icons/tech/threejs.svg"
+  },
+  "typescript": {
+    "title": "TypeScript",
+    "path": "img/icons/tech/typescript.svg"
+  },
+  "unity": {
+    "title": "Unity",
+    "path": "img/icons/tech/unity.svg"
+  },
+  "vuejs": {
+    "title": "VueJS",
+    "path": "img/icons/tech/vuejs.svg"
+  },
+  "webpack": {
+    "title": "WebPack",
+    "path": "img/icons/tech/webpack.svg"
+  },
+  "woocommerce": {
+    "title": "Woocommerce",
+    "path": "img/icons/tech/woocommerce.svg"
+  },
+  "wordpress": {
+    "title": "WordPress",
+    "path": "img/icons/tech/wordpress.svg"
+  }
+}

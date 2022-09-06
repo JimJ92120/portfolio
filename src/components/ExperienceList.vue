@@ -10,7 +10,7 @@
           {{ experience.description }}
         </v-card-text>
         <v-card-text>
-          <ImageList :images="experience.technologies" />
+          <DevIconList :icon-slug-list="experience.technologies" />
         </v-card-text>
       </v-card>
     </v-list-item>
@@ -19,12 +19,12 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import ImageList from "@/components/base/ImageList.vue";
+import DevIconList from "@/components/base/DevIconList.vue";
 
 export default defineComponent({
   name: "ExperienceList",
   components: {
-    ImageList,
+    DevIconList,
   },
   props: ["experiences"],
 });
