@@ -128,5 +128,9 @@
         "icon": "mdi-scale-balance"
       }
     ]
+  },
+  "description": {
+    "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "objectives": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet aliquam id diam maecenas. Euismod in pellentesque massa placerat duis ultricies lacus. Elit eget gravida cum sociis./nArcu dictum varius duis at consectetur lorem donec massa. Purus faucibus ornare suspendisse sed nisi lacus sed viverra. Neque egestas congue quisque egestas diam in. Aliquam sem et tortor consequat id. Ante in nibh mauris cursus mattis. Mi bibendum neque egestas congue quisque egestas."
   }
 }

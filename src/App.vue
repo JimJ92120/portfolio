@@ -8,7 +8,15 @@
         </v-col>
         <v-col>
           <v-main>
-            <h1>Hello World</h1>
+            <h1>{ Hello World! }</h1>
+            <v-container>
+              <h2>{ About me }</h2>
+              <p>{{ resumeData.description.about }}</p>
+            </v-container>
+            <v-container>
+              <h2>{ Objectives }</h2>
+              <p>{{ resumeData.description.objectives }}</p>
+            </v-container>
           </v-main>
         </v-col>
       </v-row>
