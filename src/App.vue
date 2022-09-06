@@ -4,7 +4,8 @@
       <v-row>
         <v-col cols="12" md="4">
           <ProfileCard :profile="resumeData.profile" class="mb-5" />
-          <SkillListCard :skills="resumeData.skills" />
+          <SkillListCard :skills="resumeData.skills" class="mb-5" />
+          <HobbiesListCard :hobbies="resumeData.hobbies" />
         </v-col>
         <v-col>
           <v-main>
@@ -29,12 +30,14 @@ import { defineComponent } from "vue";
 import resumeData from "@/data.json";
 import ProfileCard from "@/components/ProfileCard.vue";
 import SkillListCard from "@/components/SkillListCard.vue";
+import HobbiesListCard from "@/components/HobbiesListCard.vue";
 
 export default defineComponent({
   name: "App",
   components: {
     ProfileCard,
     SkillListCard,
+    HobbiesListCard,
   },
   data() {
     return {
