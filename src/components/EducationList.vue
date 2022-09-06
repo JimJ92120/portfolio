@@ -3,10 +3,10 @@
     <v-timeline-item v-for="(school, key) in schools" :key="key">
       <template v-slot:opposite>
         <div class="text-h6 font-weight-bold">{{ school.school }}</div>
+        <div class="text-subtitle font-weight-light">{{ school.period }}</div>
       </template>
       <v-card>
         <v-card-title>{{ school.grade }}</v-card-title>
-        <v-card-subtitle>{{ school.period }}</v-card-subtitle>
         <v-card-subtitle>
           {{ school.location }}
         </v-card-subtitle>
