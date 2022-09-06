@@ -5,6 +5,7 @@
         :height="imageSize"
         :width="imageSize"
         :alt="image.title"
+        :lazy-src="image.path"
         :src="image.path"
       />
     </v-list-item>
