@@ -12,11 +12,19 @@
             <h1>{ Hello World! }</h1>
             <v-container>
               <h2>{ About me }</h2>
-              <p>{{ resumeData.description.about }}</p>
+              <p>
+                {{ resumeData.description.about }}
+              </p>
             </v-container>
             <v-container>
               <h2>{ Objectives }</h2>
-              <p>{{ resumeData.description.objectives }}</p>
+              <p style="white-space: pre-wrap">
+                {{ resumeData.description.objectives }}
+              </p>
+            </v-container>
+            <v-container>
+              <h2>{ Experiences }</h2>
+              <ExperienceList :experiences="resumeData.experiences" />
             </v-container>
           </v-main>
         </v-col>
@@ -31,6 +39,7 @@ import resumeData from "@/data.json";
 import ProfileCard from "@/components/ProfileCard.vue";
 import SkillListCard from "@/components/SkillListCard.vue";
 import HobbiesListCard from "@/components/HobbiesListCard.vue";
+import ExperienceList from "@/components/ExperienceList.vue";
 
 export default defineComponent({
   name: "App",
@@ -38,6 +47,7 @@ export default defineComponent({
     ProfileCard,
     SkillListCard,
     HobbiesListCard,
+    ExperienceList,
   },
   data() {
     return {
