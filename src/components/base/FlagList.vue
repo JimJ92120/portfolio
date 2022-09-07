@@ -2,7 +2,7 @@
   <v-container>
     <v-row>
       <v-col cols="3" v-for="(country, key) in countries" :key="key">
-        <country-flag class="mr-2 my-1" :country="country" />
+        <country-flag :country="country" />
       </v-col>
     </v-row>
   </v-container>
