@@ -2,7 +2,7 @@
   <v-timeline side="end" align="start" line-inset="12">
     <v-timeline-item v-for="(timelineItem, key) in timelineItems" :key="key">
       <template v-slot:opposite>
-        <div v-if="!isMobile">
+        <div v-if="!isMobile" class="timeline-item__header">
           <div class="text-h6 font-weight-bold">{{ timelineItem.title }}</div>
           <div class="text-subtitle font-weight-light">
             {{ timelineItem.period }}
@@ -54,12 +54,16 @@ export default defineComponent({
 </script>
 
 <style>
-@media (max-width: 960px) {
-  .v-timeline-item__body {
-    min-width: 100%;
+.v-card-title {
+  white-space: pre-wrap;
+}
+@media (min-width: 960px) {
+  .timeline-item__header {
+    width: 200px;
   }
-  .v-card-title {
-    white-space: pre-wrap;
+  .v-timeline-item__body {
+    min-width: 500px;
+    width: 500px;
   }
 }
 </style>
