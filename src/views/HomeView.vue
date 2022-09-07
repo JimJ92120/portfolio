@@ -40,11 +40,11 @@ import { defineComponent } from "vue";
 
 import resumeData from "@/data/resume.json";
 
-import ProfileCard from "@/components/ProfileCard.vue";
-import SkillListCard from "@/components/SkillListCard.vue";
-import HobbiesListCard from "@/components/HobbiesListCard.vue";
-import ExperienceList from "@/components/ExperienceList.vue";
-import EducationList from "@/components/EducationList.vue";
+import ProfileCard from "@/components/resume/ProfileCard.vue";
+import SkillListCard from "@/components/resume/SkillListCard.vue";
+import HobbiesListCard from "@/components/resume/HobbiesListCard.vue";
+import ExperienceList from "@/components/resume/ExperienceList.vue";
+import EducationList from "@/components/resume/EducationList.vue";
 
 export default defineComponent({
   name: "HomeView",
