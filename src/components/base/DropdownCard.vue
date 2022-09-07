@@ -18,12 +18,20 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { useDisplay } from "vuetify";
 
 export default defineComponent({
   name: "SkillListCard",
   data() {
     return {
-      show: true,
+      show: !this.isMobile,
+    };
+  },
+  setup() {
+    const { name } = useDisplay();
+
+    return {
+      isMobile: ["xs", "sm"].includes(name.value),
     };
   },
 });
