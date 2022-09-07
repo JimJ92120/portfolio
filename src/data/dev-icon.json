@@ -3,6 +3,10 @@
     "title": "Bash",
     "path": "img/icons/tech/bash.svg"
   },
+  "babylonjs": {
+    "title": "Babylon.js",
+    "path": "img/icons/tech/babylonjs.svg"
+  },
   "bootstrap": {
     "title": "Bootstrap",
     "path": "img/icons/tech/bootstrap.svg"
