@@ -1,10 +1,12 @@
 <template>
-  <v-list :class="isRow ? 'd-flex flex-wrap' : ''">
-    <v-list-item v-for="(icon, key) in icons" :key="key">
-      <v-icon size="x-large" class="mr-2">{{ icon.icon }}</v-icon>
-      {{ !isRow ? icon.title : "" }}
-    </v-list-item>
-  </v-list>
+  <v-container>
+    <v-row>
+      <v-col :cols="isRow ? 3 : 12" v-for="(icon, key) in icons" :key="key">
+        <v-icon size="x-large" class="mr-2">{{ icon.icon }}</v-icon>
+        {{ !isRow ? icon.title : "" }}
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script lang="ts">
