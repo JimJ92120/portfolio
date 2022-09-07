@@ -10,7 +10,7 @@ View [demo](https://jimj92120.github.io/portfolio/) (Github Pages).
 
 ### Content
 
-To change content, edit fields in `src/data.json` accordingly and update `components` if necessary.  
+To change content, edit fields in `src/data/resume.json` accordingly and update `components` if necessary.  
 
 ### Dev icons
 

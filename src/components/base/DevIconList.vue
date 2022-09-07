@@ -17,7 +17,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
-import devIconData from "@/dev-icon.json";
+import devIconData from "@/data/dev-icon.json";
 
 type ImageObject = {
   title: string;
