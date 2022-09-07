@@ -9,7 +9,7 @@
           </div>
         </div>
       </template>
-      <v-card>
+      <v-card class="pb-3">
         <div v-if="isMobile">
           <v-card-title class="text-subtitle-1 font-weight-bold">
             {{ timelineItem.title }}

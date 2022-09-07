@@ -10,17 +10,27 @@
         <v-col>
           <v-main>
             <h1>{ Hello World! }</h1>
-            <v-container>
+
+            <v-container class="px-0 my-3">
               <h2>{ About me }</h2>
               <p style="white-space: pre-wrap">
                 {{ resumeData.description.about }}
               </p>
             </v-container>
-            <v-container>
+            <v-container class="px-0 my-3">
+              <h2>{ Objectives }</h2>
+              <p style="white-space: pre-wrap">
+                {{ resumeData.description.objectives }}
+              </p>
+            </v-container>
+
+            <v-divider></v-divider>
+
+            <v-container class="px-0 my-3">
               <h2>{ Experiences }</h2>
               <ExperienceList :experiences="resumeData.experiences" />
             </v-container>
-            <v-container>
+            <v-container class="px-0 my-3">
               <h2>{ Education }</h2>
               <EducationList :schools="resumeData.education" />
             </v-container>
