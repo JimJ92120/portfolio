@@ -45,7 +45,9 @@ nav {
     }
   }
 }
-.v-app-bar-title {
-  position: absolute;
+@media (min-width: 960px) {
+  .v-app-bar-title {
+    position: absolute;
+  }
 }
 </style>
