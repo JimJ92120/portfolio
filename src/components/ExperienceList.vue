@@ -1,34 +1,28 @@
 <template>
-  <v-timeline side="end" align="start" line-inset="12">
-    <v-timeline-item v-for="(experience, key) in experiences" :key="key">
-      <template v-slot:opposite>
-        <div class="text-h6 font-weight-bold">{{ experience.company }}</div>
-        <div class="text-subtitle font-weight-light">
-          {{ experience.period }}
-        </div>
-      </template>
-      <v-card>
-        <v-card-title>
-          {{ experience.position }}
-        </v-card-title>
-        <v-card-text style="white-space: pre-wrap" class="mt-3">
-          {{ experience.description }}
-        </v-card-text>
-        <v-card-text>
-          <DevIconList :icon-slug-list="experience.technologies" />
-        </v-card-text>
-      </v-card>
-    </v-timeline-item>
-  </v-timeline>
+  <TimelineCardList :timeline-items="experiences">
+    <template #item-details="{ position, description, technologies }">
+      <v-card-title>
+        {{ position }}
+      </v-card-title>
+      <v-card-text style="white-space: pre-wrap" class="mt-3">
+        {{ description }}
+      </v-card-text>
+      <v-card-text>
+        <DevIconList :icon-slug-list="technologies" />
+      </v-card-text>
+    </template>
+  </TimelineCardList>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import TimelineCardList from "@/components/base/TimelineCardList.vue";
 import DevIconList from "@/components/base/DevIconList.vue";
 
 export default defineComponent({
   name: "ExperienceList",
   components: {
+    TimelineCardList,
     DevIconList,
   },
   props: ["experiences"],

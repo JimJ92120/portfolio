@@ -1,25 +1,23 @@
 <template>
-  <v-timeline side="end" align="start" line-inset="12">
-    <v-timeline-item v-for="(school, key) in schools" :key="key">
-      <template v-slot:opposite>
-        <div class="text-h6 font-weight-bold">{{ school.school }}</div>
-        <div class="text-subtitle font-weight-light">{{ school.period }}</div>
-      </template>
-      <v-card>
-        <v-card-title>{{ school.grade }}</v-card-title>
-        <v-card-subtitle>
-          {{ school.location }}
-        </v-card-subtitle>
-      </v-card>
-    </v-timeline-item>
-  </v-timeline>
+  <TimelineCardList :timeline-items="schools" :is-mobile="isMobile">
+    <template #item-details="{ grade, location }">
+      <v-card-title>{{ grade }}</v-card-title>
+      <v-card-subtitle>
+        {{ location }}
+      </v-card-subtitle>
+    </template>
+  </TimelineCardList>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import TimelineCardList from "@/components/base/TimelineCardList.vue";
 
 export default defineComponent({
   name: "EducationList",
-  props: ["schools"],
+  components: {
+    TimelineCardList,
+  },
+  props: ["schools", "isMobile"],
 });
 </script>

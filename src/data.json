@@ -112,61 +112,69 @@
   },
   "experiences": [
     {
-      "company": "Freelance",
-      "position": "Full Stack Developer",
+      "title": "Freelance",
       "period": "October 2019 - Present",
-      "description": "As a freelancer, I had the opportunity to work on various projects and with different types of clients.\nThis gave me a decent experience that improved my expertise and also various solutions for the same problematic.\nI also was able to develop communication skills which is a must when running a project to ensure that the client is well understood.\nAside, I've also had the opportunity to learn about different aspects of a business, which helps assessing solutions and risks for a client.",
-      "technologies": [
-        "css",
-        "javascript",
-        "php",
-        "typescript",
-        "python",
-        "sass",
-        "wordpress",
-        "woocommerce",
-        "jquery",
-        "bootstrap",
-        "vuejs",
-        "reactjs",
-        "ionic",
-        "storybook",
-        "webpack"
-      ]
+      "details": {
+        "position": "Full Stack Developer",
+        "description": "As a freelancer, I had the opportunity to work on various projects and with different types of clients.\nThis gave me a decent experience that improved my expertise and also various solutions for the same problematic.\nI also was able to develop communication skills which is a must when running a project to ensure that the client is well understood.\nAside, I've also had the opportunity to learn about different aspects of a business, which helps assessing solutions and risks for a client.",
+        "technologies": [
+          "css",
+          "javascript",
+          "php",
+          "typescript",
+          "python",
+          "sass",
+          "wordpress",
+          "woocommerce",
+          "jquery",
+          "bootstrap",
+          "vuejs",
+          "reactjs",
+          "ionic",
+          "storybook",
+          "webpack"
+        ]
+      }
     },
     {
-      "company": "Sunbytes",
-      "position": "Full Stack Developer",
+      "title": "Sunbytes",
       "period": "May 2021 - July 2022",
-      "description": "Working with a team, I was able to work on different projects (from simple blogs to e-commerces) in which I had the opportunity to learn and work with various tools and technology (Gitflow with Gitlab, ReactJS, devops, etc).\nAs having a small leadership position, I've also helped to push other team members to grow their developer mindset and keep up to date with their stack and helped the company to lead some internal projects.\nAside, I supported company and team members to get up to date with new WordPress tools and workflow (Gutenberg, ReactJS, CI/CD, etc...), to make it a standard for new and future projects.\nThrough this experience and also the company's courses, I also grew some soft and hard skills such as problem solving, creativity, stakeholders management, communication, etc...",
-      "technologies": [
-        "css",
-        "javascript",
-        "php",
-        "sass",
-        "wordpress",
-        "woocommerce",
-        "jquery",
-        "bootstrap",
-        "reactjs",
-        "webpack",
-        "composer",
-        "bash"
-      ]
+      "details": {
+        "position": "Full Stack Developer",
+        "description": "Working with a team, I was able to work on different projects (from simple blogs to e-commerces) in which I had the opportunity to learn and work with various tools and technology (Gitflow with Gitlab, ReactJS, devops, etc).\nAs having a small leadership position, I've also helped to push other team members to grow their developer mindset and keep up to date with their stack and helped the company to lead some internal projects.\nAside, I supported company and team members to get up to date with new WordPress tools and workflow (Gutenberg, ReactJS, CI/CD, etc...), to make it a standard for new and future projects.\nThrough this experience and also the company's courses, I also grew some soft and hard skills such as problem solving, creativity, stakeholders management, communication, etc...",
+        "technologies": [
+          "css",
+          "javascript",
+          "php",
+          "sass",
+          "wordpress",
+          "woocommerce",
+          "jquery",
+          "bootstrap",
+          "reactjs",
+          "webpack",
+          "composer",
+          "bash"
+        ]
+      }
     }
   ],
   "education": [
     {
-      "school": "Lycée-Franco-Allemand",
-      "grade": "Middle- and High-school",
+      "title": "Lycée-Franco-Allemand",
       "period": "2004/2005 to 2012/2013",
-      "location": "Buc, France"
+      "details": {
+        "grade": "Middle- and High-school",
+        "location": "Buc, France"
+      }
     },
     {
-      "school": "Deutsch-Französisches Gymnasium",
-      "grade": "High-school",
+      "title": "Deutsch-Französisches Gymnasium",
       "period": "2009/2010",
-      "location": "Freiburg Im Breisgau, Germany"
+      "details": {
+        "grade": "High-school",
+        "location": "Freiburg Im Breisgau, Germany"
+      }
     }
   ]
 }

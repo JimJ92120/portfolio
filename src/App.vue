@@ -18,11 +18,17 @@
             </v-container>
             <v-container>
               <h2>{ Experiences }</h2>
-              <ExperienceList :experiences="resumeData.experiences" />
+              <ExperienceList
+                :experiences="resumeData.experiences"
+                :is-mobile="isSmallScreen"
+              />
             </v-container>
             <v-container>
               <h2>{ Education }</h2>
-              <EducationList :schools="resumeData.education" />
+              <EducationList
+                :schools="resumeData.education"
+                :is-mobile="isSmallScreen"
+              />
             </v-container>
           </v-main>
         </v-col>
@@ -33,6 +39,8 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { useDisplay } from "vuetify";
+
 import resumeData from "@/data.json";
 
 import ProfileCard from "@/components/ProfileCard.vue";
@@ -53,6 +61,13 @@ export default defineComponent({
   data() {
     return {
       resumeData,
+    };
+  },
+  setup() {
+    const { name } = useDisplay();
+
+    return {
+      isSmallScreen: ["xs", "sm"].includes(name.value),
     };
   },
 });
