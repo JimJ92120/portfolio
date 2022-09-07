@@ -9,7 +9,7 @@
           </div>
         </div>
       </template>
-      <v-card class="pb-3">
+      <v-card class="pb-3" style="max-width: 100%">
         <div v-if="isMobile">
           <v-card-title class="text-subtitle-1 font-weight-bold">
             {{ timelineItem.title }}
@@ -52,3 +52,14 @@ export default defineComponent({
   },
 });
 </script>
+
+<style>
+@media (max-width: 960px) {
+  .v-timeline-item__body {
+    min-width: 100%;
+  }
+  .v-card-title {
+    white-space: pre-wrap;
+  }
+}
+</style>
