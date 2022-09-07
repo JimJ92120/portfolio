@@ -1,6 +1,22 @@
 # portfolio
 
+A single-page resume example with [`Vue.js 3`](https://vuejs.org/guide/introduction.html) and [`Vuetify 3 Beta`](https://next.vuetifyjs.com/en/getting-started/installation/).  
+
 View [demo](https://jimj92120.github.io/portfolio/) (Github Pages).
+
+
+---
+## How to use
+
+### Content
+
+To change content, edit fields in `src/data.json` accordingly and update `components` if necessary.  
+
+### Dev icons
+
+`dev-icons` are stored locally (sourced from [devicon.dev](https://devicon.dev/)).  
+
+To add a new icon, download the image file into `public/img/icons/tech/` directory and list it in `src/dev-icon.json` (with its `slug` as key and a `title` with `path` as value).  
 
 
 ---
@@ -28,23 +44,13 @@ npm run serve
 npm run build
 ```
 
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ---
 ## Deploy
 
 ### Github Pages
+
+Update `deploy.sh` based on repository and branch used then run the following:
 ```bash
 npm run deploy
 ```
