@@ -1,5 +1,5 @@
 <template>
-  <TimelineCardList :timeline-items="experiences" :is-mobile="isMobile">
+  <TimelineCardList :timeline-items="experiences">
     <template #item-details="{ position, description, technologies }">
       <v-card-title>
         {{ position }}
@@ -25,6 +25,6 @@ export default defineComponent({
     TimelineCardList,
     DevIconList,
   },
-  props: ["experiences", "isMobile"],
+  props: ["experiences"],
 });
 </script>

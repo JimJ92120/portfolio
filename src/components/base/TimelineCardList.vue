@@ -27,6 +27,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
+import { useDisplay } from "vuetify";
 
 type TimelineItem = {
   title: string;
@@ -41,10 +42,13 @@ export default defineComponent({
       type: Object as PropType<TimelineItem[]>,
       required: true,
     },
-    isMobile: {
-      type: Boolean,
-      default: false,
-    },
+  },
+  setup() {
+    const { name } = useDisplay();
+
+    return {
+      isMobile: ["xs", "sm"].includes(name.value),
+    };
   },
 });
 </script>

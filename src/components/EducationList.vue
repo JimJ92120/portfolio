@@ -1,5 +1,5 @@
 <template>
-  <TimelineCardList :timeline-items="schools" :is-mobile="isMobile">
+  <TimelineCardList :timeline-items="schools">
     <template #item-details="{ grade, location }">
       <v-card-title>{{ grade }}</v-card-title>
       <v-card-subtitle>
@@ -18,6 +18,6 @@ export default defineComponent({
   components: {
     TimelineCardList,
   },
-  props: ["schools", "isMobile"],
+  props: ["schools"],
 });
 </script>
