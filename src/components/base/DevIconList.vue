@@ -1,16 +1,18 @@
 <template>
-  <v-list class="d-flex flex-wrap">
-    <v-list-item v-for="(image, key) in icons" :key="key">
-      <v-img
-        :height="imageSize"
-        :width="imageSize"
-        :alt="image.title"
-        :lazy-src="image.path"
-        :src="image.path"
-        :title="image.title"
-      />
-    </v-list-item>
-  </v-list>
+  <v-container>
+    <v-row>
+      <v-col cols="3" v-for="(image, key) in icons" :key="key">
+        <v-img
+          :height="imageSize"
+          :width="imageSize"
+          :alt="image.title"
+          :lazy-src="image.path"
+          :src="image.path"
+          :title="image.title"
+        />
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script lang="ts">
