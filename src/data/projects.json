@@ -10,5 +10,16 @@
             "wasm",
             "webgl"
         ]
+    },
+    {
+        "title": "HTML - CSS - JS",
+        "description": "Some animations using HTML, CSS and JavaScript (Vanilla).",
+        "repositoryUrl": "https://github.com/JimJ92120/html-css-js",
+        "demoUrl": "https://jimj92120.github.io/html-css-js/",
+        "technologies": [
+            "html",
+            "css",
+            "javascript"
+        ]
     }
 ]
