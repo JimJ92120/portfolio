@@ -13,12 +13,6 @@
             {{ resumeData.description.about }}
           </p>
         </v-container>
-        <v-container class="px-0 my-3">
-          <h2>{ Objectives }</h2>
-          <p style="white-space: pre-wrap">
-            {{ resumeData.description.objectives }}
-          </p>
-        </v-container>
 
         <v-divider></v-divider>
 
