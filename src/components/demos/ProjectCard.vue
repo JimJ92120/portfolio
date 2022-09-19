@@ -44,8 +44,9 @@ export default defineComponent({
 </script>
 
 <style>
+/* to remove !important */
 .v-card-subtitle {
-  text-overflow: unset;
-  white-space: pre-wrap;
+  text-overflow: unset !important;
+  white-space: pre-wrap !important;
 }
 </style>
