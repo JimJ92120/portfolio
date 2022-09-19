@@ -2,12 +2,12 @@
   <v-timeline side="end" align="start" line-inset="12">
     <v-timeline-item v-for="(timelineItem, key) in timelineItems" :key="key">
       <v-card class="pb-3" style="max-width: 100%">
-        <div class="px-4 pt-4">
-          <div class="text-h6 font-weight-bold">{{ timelineItem.title }}</div>
-          <div class="text-subtitle font-weight-light">
+        <div>
+          <v-card-title>{{ timelineItem.title }}</v-card-title>
+          <v-card-subtitle>
             {{ timelineItem.period }}
-          </div>
-          <v-divider class="mt-4"></v-divider>
+          </v-card-subtitle>
+          <v-divider class="mt-4" />
         </div>
         <slot name="item-details" v-bind="{ ...timelineItem.details }" />
       </v-card>
