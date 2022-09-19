@@ -12,6 +12,18 @@
         ]
     },
     {
+        "title": "Mandelbrot Set",
+        "description": "A Mandelbrot set representation using WebAssembly with Rust and rendered with WebGL 2.",
+        "repositoryUrl": "https://github.com/JimJ92120/mandelbrot",
+        "demoUrl": "https://jimj92120.github.io/mandelbrot/",
+        "technologies": [
+            "rust",
+            "typescript",
+            "wasm",
+            "webgl"
+        ]
+    },
+    {
         "title": "HTML - CSS - JS",
         "description": "Some animations using HTML, CSS and JavaScript (Vanilla).",
         "repositoryUrl": "https://github.com/JimJ92120/html-css-js",
