@@ -75,6 +75,14 @@
     "title": "VueJS",
     "path": "img/icons/tech/vuejs.svg"
   },
+  "wasm": {
+    "title": "WebAssembly",
+    "path": "img/icons/tech/wasm.svg"
+  },
+  "webgl": {
+    "title": "WebGL",
+    "path": "img/icons/tech/webgl.svg"
+  },
   "webpack": {
     "title": "WebPack",
     "path": "img/icons/tech/webpack.svg"
