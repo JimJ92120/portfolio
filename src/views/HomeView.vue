@@ -6,7 +6,7 @@
         <SkillListCard :skills="resumeData.skills" class="mb-5" />
         <HobbiesListCard :hobbies="resumeData.hobbies" />
       </v-col>
-      <v-col>
+      <v-col cols="12" md="8">
         <v-container class="px-0 my-3">
           <h2>{ About me }</h2>
           <p style="white-space: pre-wrap">
