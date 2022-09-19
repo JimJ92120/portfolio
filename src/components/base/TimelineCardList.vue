@@ -1,22 +1,12 @@
 <template>
   <v-timeline side="end" align="start" line-inset="12">
     <v-timeline-item v-for="(timelineItem, key) in timelineItems" :key="key">
-      <template v-slot:opposite>
-        <div v-if="!isMobile" class="timeline-item__header">
+      <v-card class="pb-3" style="max-width: 100%">
+        <div class="px-4 pt-4">
           <div class="text-h6 font-weight-bold">{{ timelineItem.title }}</div>
           <div class="text-subtitle font-weight-light">
             {{ timelineItem.period }}
           </div>
-        </div>
-      </template>
-      <v-card class="pb-3" style="max-width: 100%">
-        <div v-if="isMobile">
-          <v-card-title class="text-subtitle-1 font-weight-bold">
-            {{ timelineItem.title }}
-          </v-card-title>
-          <v-card-subtitle>
-            {{ timelineItem.period }}
-          </v-card-subtitle>
           <v-divider class="mt-4"></v-divider>
         </div>
         <slot name="item-details" v-bind="{ ...timelineItem.details }" />
