@@ -1,0 +1,14 @@
+[
+    {
+        "title": "Conway's Game of Life",
+        "description": "A Conway's Game of Life demo using WebAssembly with Rust and TypeScript.",
+        "repositoryUrl": "https://github.com/JimJ92120/game-of-life",
+        "demoUrl": "https://jimj92120.github.io/game-of-life/",
+        "technologies": [
+            "rust",
+            "typescript",
+            "wasm",
+            "webgl"
+        ]
+    }
+]
