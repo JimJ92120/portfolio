@@ -43,7 +43,7 @@ export default defineComponent({
 });
 </script>
 
-<style>
+<style scoped>
 /* to remove !important */
 .v-card-subtitle {
   text-overflow: unset !important;
