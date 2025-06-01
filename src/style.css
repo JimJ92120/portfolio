@@ -1,0 +1,34 @@
+body {
+  margin: 0;
+  display: flex;
+  flex-flow: column;
+
+  min-height: 100vh;
+}
+
+body > * {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.scene {
+  background-color: lightblue;
+}
+
+.controls {
+  /*  */
+}
+.controls button {
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 2px 5px;
+}
+
+.controls__direction {
+  /*  */
+}
+
+.controls__select {
+  /*  */
+}
