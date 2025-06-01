@@ -1,6 +1,9 @@
 import "./style.css";
 
 import MainFrame from "./frames/MainFrame";
+import Frame from "./frames/Frame";
+import Renderer from "./Renderer";
+import TestFrame from "./frames/TestFrame";
 
 document.addEventListener("DOMContentLoaded", () => {
   const $app: HTMLElement = document.querySelector("#app")!;
@@ -24,37 +27,30 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
   `;
 
-  // config
-  const pixelSize: [number, number] = [50, 50];
-  const playerColor = "red";
   // state
-  const state = {
+  type State = {
+    playerPosition: [number, number];
+    isMainFrame: boolean;
+  };
+  const state: State = {
     playerPosition: [0, 0],
+    isMainFrame: true,
   };
 
-  const $scene: HTMLCanvasElement = $app.querySelector(".scene")!;
-  const context: CanvasRenderingContext2D = $scene.getContext("2d")!;
+  const mainFrame = new MainFrame();
+  const testFrame = new TestFrame();
 
-  const renderPlayer = () => {
-    context.fillStyle = playerColor;
-    context.fillRect(
-      state.playerPosition[0] * pixelSize[0],
-      state.playerPosition[1] * pixelSize[1],
-      pixelSize[0],
-      pixelSize[1]
-    );
-  };
+  const renderer = new Renderer(
+    $app.querySelector(".scene")!,
+    [50, 50],
+    mainFrame
+  );
 
-  const mainFrame = new MainFrame(context, pixelSize);
-  $scene.width = pixelSize[0] * mainFrame.size[0];
-  $scene.height = pixelSize[1] * mainFrame.size[1];
-  state.playerPosition = mainFrame.initialPlayerPosition;
+  state.playerPosition = renderer.currentFrame.initialPlayerPosition;
 
   const render = () => {
-    context.clearRect(0, 0, $scene.width, $scene.height);
-
-    mainFrame.render();
-    renderPlayer();
+    renderer.renderFrame();
+    renderer.renderPlayer(state.playerPosition);
   };
   render();
 
@@ -90,12 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
     // out of bound
-    if (
-      0 > nextPlayerPosition[0] ||
-      0 > nextPlayerPosition[1] ||
-      mainFrame.size[0] <= nextPlayerPosition[0] ||
-      mainFrame.size[1] <= nextPlayerPosition[1]
-    ) {
+    if (renderer.currentFrame.isOutOfBound(nextPlayerPosition)) {
       console.error(
         `nextPlayerPosition [${nextPlayerPosition}] is out of bound`
       );
@@ -104,24 +95,35 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // frame
-    if (0 === mainFrame.data[nextPlayerPosition[1]][nextPlayerPosition[0]]) {
-      state.playerPosition = nextPlayerPosition;
-
-      render();
-    } else if (
-      1 === mainFrame.data[nextPlayerPosition[1]][nextPlayerPosition[0]]
+    switch (
+      renderer.currentFrame.data[nextPlayerPosition[1]][nextPlayerPosition[0]]
     ) {
-      state.playerPosition = nextPlayerPosition;
+      case 0:
+        state.playerPosition = nextPlayerPosition;
+        render();
+        break;
 
-      render();
+      case 1:
+      case 2:
+        console.error(
+          `nextPlayerPosition [${nextPlayerPosition}] is a block or building`
+        );
+        break;
 
-      console.log("load new frame");
-    } else {
-      console.error(
-        `nextPlayerPosition [${nextPlayerPosition}] is a block or building`
-      );
+      case 3:
+        if (state.isMainFrame) {
+          renderer.setFrame(testFrame);
+        } else {
+          renderer.setFrame(mainFrame);
+        }
 
-      return;
+        state.isMainFrame = !state.isMainFrame;
+        state.playerPosition = renderer.currentFrame.initialPlayerPosition;
+        render();
+        break;
+
+      default:
+        break;
     }
   });
 });
