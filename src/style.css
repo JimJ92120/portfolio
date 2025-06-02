@@ -21,8 +21,8 @@ body > * {
 }
 .controls button {
   border: 1px solid black;
-  border-radius: 15px;
-  padding: 2px 5px;
+  border-radius: 50%;
+  padding: 4px 5px;
 }
 
 .controls__direction {

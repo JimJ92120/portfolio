@@ -1,59 +1,45 @@
 import "./style.css";
 
-import MainFrame from "./frames/MainFrame";
-import Frame from "./frames/Frame";
+import App from "./App";
+
 import Renderer from "./Renderer";
-import TestFrame from "./frames/TestFrame";
+import Frame from "./Frame";
+import Player from "./Player";
+
+const TILE_SIZE: [number, number] = [25, 25];
 
 document.addEventListener("DOMContentLoaded", () => {
-  const $app: HTMLElement = document.querySelector("#app")!;
-
-  $app.innerHTML = `
-    <h1>Portfolio</h1>
-
-    <canvas class="scene"></canvas>
-
-    <div class="controls">
-      <div class="controls__direction">
-        <button>L</button>
-        <button>U</button>
-        <button>R</button>
-        <button>D</button>
-      </div>
-      <div class="controls__select">
-        <button>A</button>
-        <button>B</button>
-      </div>
-    </div>
-  `;
-
-  // state
-  type State = {
-    playerPosition: [number, number];
-    isMainFrame: boolean;
-  };
-  const state: State = {
-    playerPosition: [0, 0],
-    isMainFrame: true,
-  };
-
-  const mainFrame = new MainFrame();
-  const testFrame = new TestFrame();
+  const app = new App(document.querySelector("#app")!);
+  app.render();
 
   const renderer = new Renderer(
-    $app.querySelector(".scene")!,
-    [50, 50],
-    mainFrame
+    app.$container.querySelector(".scene")!,
+    TILE_SIZE
   );
 
-  state.playerPosition = renderer.currentFrame.initialPlayerPosition;
+  const mainFrame = new Frame(
+    [
+      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      [1, 2, 2, 2, 0, 1, 0, 0, 2, 2, 1],
+      [1, 2, 3, 2, 0, 1, 0, 0, 2, 2, 1],
+      [1, 0, 0, 0, 0, 0, 0, 0, 3, 2, 1],
+      [1, 0, 0, 0, 1, 0, 0, 0, 3, 2, 1],
+      [1, 0, 0, 0, 0, 0, 0, 0, 2, 2, 1],
+      [1, 2, 2, 0, 0, 0, 1, 1, 0, 0, 1],
+      [1, 2, 3, 0, 0, 0, 0, 0, 0, 0, 1],
+      [1, 2, 2, 0, 0, 0, 0, 0, 1, 1, 1],
+      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    ],
+    [5, 8]
+  );
+  const player = new Player();
+  player.position = mainFrame.initialPosition;
 
-  const render = () => {
-    renderer.renderFrame();
-    renderer.renderPlayer(state.playerPosition);
-  };
-  render();
+  renderer.resize(mainFrame.width, mainFrame.height);
+  renderer.renderFrame(mainFrame);
+  renderer.renderPlayer(player);
 
+  //
   document.addEventListener("keyup", (event: KeyboardEvent) => {
     let direction: [number, number] = [0, 0]; // [x, y]
 
@@ -75,55 +61,6 @@ document.addEventListener("DOMContentLoaded", () => {
         break;
     }
 
-    if (0 === direction[0] && 0 === direction[1]) {
-      return;
-    }
-
-    const { playerPosition } = state;
-    const nextPlayerPosition: [number, number] = [
-      playerPosition[0] + direction[0],
-      playerPosition[1] + direction[1],
-    ];
-
-    // out of bound
-    if (renderer.currentFrame.isOutOfBound(nextPlayerPosition)) {
-      console.error(
-        `nextPlayerPosition [${nextPlayerPosition}] is out of bound`
-      );
-
-      return;
-    }
-
-    // frame
-    switch (
-      renderer.currentFrame.data[nextPlayerPosition[1]][nextPlayerPosition[0]]
-    ) {
-      case 0:
-        state.playerPosition = nextPlayerPosition;
-        render();
-        break;
-
-      case 1:
-      case 2:
-        console.error(
-          `nextPlayerPosition [${nextPlayerPosition}] is a block or building`
-        );
-        break;
-
-      case 3:
-        if (state.isMainFrame) {
-          renderer.setFrame(testFrame);
-        } else {
-          renderer.setFrame(mainFrame);
-        }
-
-        state.isMainFrame = !state.isMainFrame;
-        state.playerPosition = renderer.currentFrame.initialPlayerPosition;
-        render();
-        break;
-
-      default:
-        break;
-    }
+    console.log(direction);
   });
 });

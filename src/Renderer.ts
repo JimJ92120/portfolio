@@ -1,79 +1,65 @@
-import Frame from "./frames/Frame";
+import Frame from "./Frame";
+import Player from "./Player";
 
 export default class Renderer {
-  $canvas: HTMLCanvasElement;
-  context: CanvasRenderingContext2D;
-  pixelSize: [number, number];
-  colors: { [key: string]: string } = {
-    empty: "green",
-    block: "black",
-    door: "grey",
-    object: "blue",
-    player: "red",
-  };
-  currentFrame: Frame;
+  private $scene: HTMLCanvasElement;
+  private context: CanvasRenderingContext2D;
+  private tileSize: [number, number];
 
-  constructor(
-    $canvas: HTMLCanvasElement,
-    pixelSize: [number, number],
-    mainFrame: Frame
-  ) {
-    this.$canvas = $canvas;
-    this.context = this.$canvas.getContext("2d")!;
-    this.pixelSize = pixelSize;
-
-    this.setFrame(mainFrame);
+  constructor($scene: HTMLCanvasElement, tileSize: [number, number]) {
+    this.$scene = $scene;
+    this.context = this.$scene.getContext("2d")!;
+    this.tileSize = tileSize;
   }
 
-  setFrame(frame: Frame): void {
-    this.currentFrame = frame;
-    this.resize();
+  get width(): number {
+    return this.$scene.width;
   }
 
-  renderFrame() {
-    this.currentFrame.data.map((row, rowIndex) => {
+  get height(): number {
+    return this.$scene.height;
+  }
+
+  renderFrame(frame: Frame): void {
+    this.context.clearRect(0, 0, this.width, this.height);
+
+    frame.data.map((row, rowIndex) => {
       row.map((cellValue, columnIndex) => {
-        this.renderCell([columnIndex, rowIndex], this.getCellColor(cellValue));
+        this.renderTile([columnIndex, rowIndex], this.getTileColor(cellValue));
       });
     });
   }
 
-  renderPlayer(playerPosition: [number, number]) {
-    this.context.fillStyle = this.colors.player;
-    this.context.fillRect(
-      playerPosition[0] * this.pixelSize[0],
-      playerPosition[1] * this.pixelSize[1],
-      this.pixelSize[0],
-      this.pixelSize[1]
-    );
+  renderPlayer(player: Player): void {
+    this.renderTile(player.position, "red");
   }
 
-  private resize(): void {
-    this.$canvas.width = this.currentFrame.size[0] * this.pixelSize[0];
-    this.$canvas.height = this.currentFrame.size[1] * this.pixelSize[1];
+  resize(width: number, height: number): void {
+    this.$scene.width = width * this.tileSize[0];
+    this.$scene.height = height * this.tileSize[1];
   }
 
-  private getCellColor(cellValue: number): string {
-    switch (cellValue) {
-      case 1:
-        return this.colors.block;
-      case 2:
-        return this.colors.object;
-      case 3:
-        return this.colors.door;
-
-      default:
-        return this.colors.empty;
-    }
-  }
-
-  private renderCell(position: [number, number], color: string) {
+  private renderTile(position: [number, number], color: string): void {
     this.context.fillStyle = color;
     this.context.fillRect(
-      position[0] * this.pixelSize[0],
-      position[1] * this.pixelSize[1],
-      this.pixelSize[0],
-      this.pixelSize[1]
+      position[0] * this.tileSize[0],
+      position[1] * this.tileSize[1],
+      this.tileSize[0],
+      this.tileSize[1]
     );
+  }
+
+  private getTileColor(cellValue: number): string {
+    switch (cellValue) {
+      case 0:
+        return "green";
+      case 2:
+        return "blue";
+      case 3:
+        return "grey";
+
+      default:
+        return "black";
+    }
   }
 }
