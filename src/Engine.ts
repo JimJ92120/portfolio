@@ -1,23 +1,16 @@
-import Frame from "./Frame";
+import Frame, { FrameActionRecord, FrameActionType } from "./Frame";
 import Player from "./Player";
 
 export type FrameRecord = { main: Frame; [key: string]: Frame };
-type FrameActionRecord = { [key: string]: CallableFunction };
-export type ActionRecord = {
-  main: FrameActionRecord;
-  [key: string]: FrameActionRecord;
-};
 
 export default class Engine {
   frames: FrameRecord;
-  actions: ActionRecord;
   currentFrameKey: string;
   player: Player;
 
-  constructor(frames: FrameRecord, player: Player, actions: ActionRecord) {
+  constructor(frames: FrameRecord, player: Player) {
     this.frames = frames;
     this.player = player;
-    this.actions = actions;
 
     this.setCurrentFrame("main");
   }
@@ -32,11 +25,10 @@ export default class Engine {
       return false;
     }
 
-    if (
-      this.actions[this.currentFrameKey] &&
-      this.actions[this.currentFrameKey][nextPosition.join(",")]
-    ) {
-      this.actions[this.currentFrameKey][nextPosition.join(",")]();
+    const action = this.currentFrame.getAction(nextPosition);
+
+    if (action) {
+      this.runAction(action[0], action[1]);
     } else {
       this.player.position = nextPosition;
       this.player.direction = direction;
@@ -87,5 +79,24 @@ export default class Engine {
     }
 
     return true;
+  }
+
+  private runAction(actionType: FrameActionType, data: any): void {
+    switch (actionType) {
+      case FrameActionType.Load:
+        if ("main" === this.currentFrameKey) {
+          this.frames["main"].initialPosition = this.player.position;
+        }
+
+        this.setCurrentFrame(data);
+        break;
+
+      case FrameActionType.Prompt:
+        alert(data);
+        break;
+
+      default:
+        break;
+    }
   }
 }

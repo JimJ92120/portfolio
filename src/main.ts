@@ -3,9 +3,9 @@ import "./style.css";
 import App from "./App";
 
 import Renderer from "./Renderer";
-import Frame from "./Frame";
+import Frame, { FrameActionType } from "./Frame";
 import Player from "./Player";
-import Engine, { ActionRecord, FrameRecord } from "./Engine";
+import Engine, { FrameRecord } from "./Engine";
 
 const TILE_SIZE: [number, number] = [25, 25];
 
@@ -27,12 +27,19 @@ document.addEventListener("DOMContentLoaded", () => {
         [1, 0, 0, 0, 0, 0, 0, 0, 3, 2, 1],
         [1, 0, 0, 0, 1, 0, 0, 0, 3, 2, 1],
         [1, 0, 0, 0, 0, 0, 0, 0, 2, 2, 1],
-        [1, 2, 2, 0, 0, 0, 1, 1, 0, 0, 1],
-        [1, 2, 3, 0, 0, 0, 0, 0, 0, 0, 1],
-        [1, 2, 2, 0, 0, 0, 0, 0, 1, 1, 1],
+        [1, 2, 2, 2, 0, 0, 1, 1, 1, 1, 1],
+        [1, 2, 3, 2, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],
         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
       ],
-      [5, 8]
+      {
+        ["2,2"]: [FrameActionType.Load, "office"],
+        ["8,3"]: [FrameActionType.Load, "gallery"],
+        ["8,4"]: [FrameActionType.Load, "gallery"],
+        ["2,7"]: [FrameActionType.Load, "home"],
+      },
+      [5, 9]
     ),
     home: new Frame(
       [
@@ -43,17 +50,31 @@ document.addEventListener("DOMContentLoaded", () => {
         [1, 0, 0, 0, 0, 1],
         [1, 1, 3, 3, 1, 1],
       ],
+      {
+        ["1,2"]: [FrameActionType.Prompt, "here's a desk"],
+        ["3,1"]: [FrameActionType.Prompt, "here's a shelve"],
+        ["4,1"]: [FrameActionType.Prompt, "here's another shelve"],
+        ["2,5"]: [FrameActionType.Load, "main"],
+        ["3,5"]: [FrameActionType.Load, "main"],
+      },
       [2, 4]
     ),
     office: new Frame(
       [
         [1, 1, 1, 1, 1, 1],
-        [1, 2, 3, 3, 2, 1],
-        [1, 0, 0, 0, 0, 1],
-        [1, 0, 0, 0, 0, 1],
+        [1, 2, 0, 3, 3, 1],
+        [1, 3, 0, 0, 0, 1],
+        [1, 2, 0, 0, 0, 1],
         [1, 0, 0, 0, 0, 1],
         [1, 1, 3, 3, 1, 1],
       ],
+      {
+        ["1,2"]: [FrameActionType.Prompt, "here's a desk"],
+        ["3,1"]: [FrameActionType.Prompt, "here's a shelve"],
+        ["4,1"]: [FrameActionType.Prompt, "here's another shelve"],
+        ["2,5"]: [FrameActionType.Load, "main"],
+        ["3,5"]: [FrameActionType.Load, "main"],
+      },
       [2, 4]
     ),
     gallery: new Frame(
@@ -65,80 +86,25 @@ document.addEventListener("DOMContentLoaded", () => {
         [1, 0, 0, 0, 0, 1],
         [1, 1, 3, 3, 1, 1],
       ],
+      {
+        ["1,1"]: [FrameActionType.Prompt, "here's project #1"],
+        ["2,1"]: [FrameActionType.Prompt, "here's project #2"],
+        ["3,1"]: [FrameActionType.Prompt, "here's project #3"],
+        ["4,1"]: [FrameActionType.Prompt, "here's project #4"],
+        ["2,5"]: [FrameActionType.Load, "main"],
+        ["3,5"]: [FrameActionType.Load, "main"],
+      },
       [2, 4]
     ),
   };
-  const actionRecord: ActionRecord = {
-    main: {
-      ["2,2"]: () => {
-        console.log("enter office");
 
-        engine.setCurrentFrame("office");
-        renderer.resize(engine.currentFrame.width, engine.currentFrame.height);
-      },
-      ["8,3"]: () => {
-        console.log("enter gallery");
+  const engine = new Engine(frameRecord, new Player());
 
-        engine.setCurrentFrame("gallery");
-        renderer.resize(engine.currentFrame.width, engine.currentFrame.height);
-      },
-      ["8,4"]: () => {
-        console.log("enter gallery");
-
-        engine.setCurrentFrame("gallery");
-        renderer.resize(engine.currentFrame.width, engine.currentFrame.height);
-      },
-      ["2,7"]: () => {
-        console.log("enter home");
-
-        engine.setCurrentFrame("home");
-        renderer.resize(engine.currentFrame.width, engine.currentFrame.height);
-      },
-    },
-    home: {
-      ["1,2"]: () => {
-        alert("here's a desk");
-      },
-      ["3,1"]: () => {
-        alert("here's an object");
-      },
-      ["4,1"]: () => {
-        alert("here's another object");
-      },
-      ["2,5"]: () => {
-        engine.setCurrentFrame("main");
-        renderer.resize(engine.currentFrame.width, engine.currentFrame.height);
-      },
-      ["3,5"]: () => {
-        engine.setCurrentFrame("main");
-        renderer.resize(engine.currentFrame.width, engine.currentFrame.height);
-      },
-    },
-    office: {
-      ["2,5"]: () => {
-        engine.setCurrentFrame("main");
-        renderer.resize(engine.currentFrame.width, engine.currentFrame.height);
-      },
-      ["3,5"]: () => {
-        engine.setCurrentFrame("main");
-        renderer.resize(engine.currentFrame.width, engine.currentFrame.height);
-      },
-    },
-    gallery: {
-      ["2,5"]: () => {
-        engine.setCurrentFrame("main");
-        renderer.resize(engine.currentFrame.width, engine.currentFrame.height);
-      },
-      ["3,5"]: () => {
-        engine.setCurrentFrame("main");
-        renderer.resize(engine.currentFrame.width, engine.currentFrame.height);
-      },
-    },
+  const render = () => {
+    renderer.resize(engine.currentFrame.width, engine.currentFrame.height);
+    renderer.renderEngine(engine);
   };
-  const engine = new Engine(frameRecord, new Player(), actionRecord);
-
-  renderer.resize(engine.currentFrame.width, engine.currentFrame.height);
-  renderer.renderEngine(engine);
+  render();
 
   //
   document.addEventListener("keyup", (event: KeyboardEvent) => {
@@ -163,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (0 !== direction[0] || 0 !== direction[1]) {
-      engine.movePlayer(direction) && renderer.renderEngine(engine);
+      engine.movePlayer(direction) && render();
     }
   });
 });

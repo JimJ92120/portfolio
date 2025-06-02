@@ -1,9 +1,22 @@
+export enum FrameActionType {
+  Load,
+  Prompt,
+}
+type FrameAction = [FrameActionType, any];
+export type FrameActionRecord = { [key: string]: FrameAction };
+
 export default class Frame {
   data: number[][];
+  actions: FrameActionRecord;
   initialPosition: [number, number];
 
-  constructor(data: number[][], initialPosition: [number, number]) {
+  constructor(
+    data: number[][],
+    actions: FrameActionRecord,
+    initialPosition: [number, number]
+  ) {
     this.data = data;
+    this.actions = actions;
     this.initialPosition = initialPosition;
   }
 
@@ -13,5 +26,17 @@ export default class Frame {
 
   get height(): number {
     return this.data.length;
+  }
+
+  getAction(position: [number, number]): FrameAction | null {
+    if (this.hasAction(position)) {
+      return this.actions[position.join(",")];
+    }
+
+    return null;
+  }
+
+  private hasAction(position: [number, number]): boolean {
+    return undefined !== this.actions[position.join(",")];
   }
 }
