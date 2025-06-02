@@ -2,6 +2,8 @@
 
 A portfolio.
 
+View [portfolio](https://jimj92120.github.io/portfolio/).
+
 ---
 
 # setup
