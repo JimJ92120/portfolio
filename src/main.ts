@@ -19,27 +19,23 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   const engine = new Engine(renderer, frameRecord);
-
-  engine.render();
-
-  //
-  document.addEventListener("keyup", (event: KeyboardEvent) => {
+  const moveEventCallback = (directionKey: string): void => {
     let direction: [number, number] = [0, 0]; // [x, y]
 
-    switch (event.key) {
-      case "ArrowUp":
+    switch (directionKey) {
+      case "up":
         direction = [0, -1];
         break;
 
-      case "ArrowDown":
+      case "down":
         direction = [0, 1];
         break;
 
-      case "ArrowLeft":
+      case "left":
         direction = [-1, 0];
         break;
 
-      case "ArrowRight":
+      case "right":
         direction = [1, 0];
         break;
     }
@@ -47,5 +43,29 @@ document.addEventListener("DOMContentLoaded", () => {
     if (0 !== direction[0] || 0 !== direction[1]) {
       engine.movePlayer(direction) && engine.render();
     }
+  };
+
+  engine.render();
+
+  // events
+  document.addEventListener("keyup", (event: KeyboardEvent) => {
+    if (
+      ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(event.key)
+    ) {
+      const directionKey = event.key.replace("Arrow", "").toLowerCase();
+
+      moveEventCallback(directionKey);
+    }
+  });
+
+  const directionButtons = app.$container.querySelectorAll(".direction-button");
+
+  Object.keys(directionButtons).map((buttonKey: any) => {
+    const $button = directionButtons[buttonKey];
+    const directionKey = $button.getAttribute("data-direction") ?? "";
+
+    $button.addEventListener("click", () => {
+      moveEventCallback(directionKey);
+    });
   });
 });
