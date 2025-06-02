@@ -105,7 +105,7 @@ export default class Engine {
     ) {
       console.error(
         `nextPosition [${nextPosition}] with value ${nextPositionCellValue} is a ${
-          1 === nextPositionCellValue ? "block" : "building"
+          1 === nextPositionCellValue ? "block" : "object"
         }`
       );
 
