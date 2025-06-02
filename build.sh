@@ -1,4 +1,4 @@
-rm -rf index.*
+rm -rf index.* *.png
 
 mkdir build
 git clone https://github.com/JimJ92120/portfolio.git build
