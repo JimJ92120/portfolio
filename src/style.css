@@ -4,12 +4,19 @@ body {
   flex-flow: column;
 
   min-height: 100vh;
+  background-color: black;
 }
 
 body > * {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+}
+
+.app {
+  border: 1px solid gray;
+  margin-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .scene {

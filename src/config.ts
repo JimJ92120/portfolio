@@ -3,5 +3,5 @@ type Config = {
 };
 
 export default {
-  tileSize: [25, 25],
+  tileSize: [50, 50],
 } as Config;
