@@ -9,7 +9,11 @@ export default class App {
     this.$container.innerHTML = `
     <h1>Portfolio</h1>
 
-    <canvas class="scene"></canvas>
+    <div class="container">
+      <canvas class="scene"></canvas>
+
+      <div class="prompt">Hello world</div>
+    </div>
 
     <div class="controls">
       <div class="controls__direction">

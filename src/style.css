@@ -15,9 +15,27 @@ body > * {
 .scene {
   background-color: lightblue;
 }
+.container {
+  position: relative;
+  box-sizing: border-box;
+}
+.prompt {
+  display: none;
+  position: absolute;
+  bottom: 0;
+
+  width: calc(100% - 8px);
+  height: calc(4rem - 8px);
+  background-color: lightblue;
+  text-align: left;
+  padding: 4px;
+}
+.prompt--active {
+  display: block;
+}
 
 .controls {
-  /*  */
+  margin-top: 1rem;
 }
 .controls button {
   border: 1px solid black;

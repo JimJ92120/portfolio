@@ -1,18 +1,26 @@
-import Frame, { FrameActionRecord, FrameActionType } from "./Frame";
+import Frame, { FrameActionType } from "./Frame";
 import Player from "./Player";
+import Renderer from "./Renderer";
 
 export type FrameRecord = { main: Frame; [key: string]: Frame };
 
 export default class Engine {
+  renderer: Renderer;
   frames: FrameRecord;
   currentFrameKey: string;
   player: Player;
 
-  constructor(frames: FrameRecord, player: Player) {
+  constructor(renderer: Renderer, frames: FrameRecord) {
+    this.renderer = renderer;
     this.frames = frames;
-    this.player = player;
+    this.player = new Player();
 
     this.setCurrentFrame("main");
+  }
+
+  render() {
+    this.renderer.renderData(this.currentFrame.data);
+    this.renderer.renderTile(this.player.position, "red");
   }
 
   movePlayer(direction: [number, number]): boolean {
@@ -41,6 +49,8 @@ export default class Engine {
     if (this.frames[frameKey]) {
       this.currentFrameKey = frameKey;
       this.player.position = this.currentFrame.initialPosition;
+
+      this.renderer.resize(this.currentFrame.width, this.currentFrame.height);
     }
   }
 
@@ -92,7 +102,9 @@ export default class Engine {
         break;
 
       case FrameActionType.Prompt:
-        alert(data);
+        this.renderer.showPrompt(data);
+
+        setTimeout(() => this.renderer.hidePrompt(), 3000);
         break;
 
       default:
