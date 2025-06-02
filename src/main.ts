@@ -45,17 +45,48 @@ document.addEventListener("DOMContentLoaded", () => {
       ],
       [2, 4]
     ),
+    office: new Frame(
+      [
+        [1, 1, 1, 1, 1, 1],
+        [1, 2, 3, 3, 2, 1],
+        [1, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 1],
+        [1, 1, 3, 3, 1, 1],
+      ],
+      [2, 4]
+    ),
+    gallery: new Frame(
+      [
+        [1, 1, 1, 1, 1, 1],
+        [1, 3, 3, 3, 3, 1],
+        [1, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 1],
+        [1, 1, 3, 3, 1, 1],
+      ],
+      [2, 4]
+    ),
   };
   const actionRecord: ActionRecord = {
     main: {
       ["2,2"]: () => {
-        alert("office coming soon");
+        console.log("enter office");
+
+        engine.setCurrentFrame("office");
+        renderer.resize(engine.currentFrame.width, engine.currentFrame.height);
       },
       ["8,3"]: () => {
-        alert("gallery coming soon");
+        console.log("enter gallery");
+
+        engine.setCurrentFrame("gallery");
+        renderer.resize(engine.currentFrame.width, engine.currentFrame.height);
       },
       ["8,4"]: () => {
-        alert("gallery coming soon");
+        console.log("enter gallery");
+
+        engine.setCurrentFrame("gallery");
+        renderer.resize(engine.currentFrame.width, engine.currentFrame.height);
       },
       ["2,7"]: () => {
         console.log("enter home");
@@ -74,6 +105,26 @@ document.addEventListener("DOMContentLoaded", () => {
       ["4,1"]: () => {
         alert("here's another object");
       },
+      ["2,5"]: () => {
+        engine.setCurrentFrame("main");
+        renderer.resize(engine.currentFrame.width, engine.currentFrame.height);
+      },
+      ["3,5"]: () => {
+        engine.setCurrentFrame("main");
+        renderer.resize(engine.currentFrame.width, engine.currentFrame.height);
+      },
+    },
+    office: {
+      ["2,5"]: () => {
+        engine.setCurrentFrame("main");
+        renderer.resize(engine.currentFrame.width, engine.currentFrame.height);
+      },
+      ["3,5"]: () => {
+        engine.setCurrentFrame("main");
+        renderer.resize(engine.currentFrame.width, engine.currentFrame.height);
+      },
+    },
+    gallery: {
       ["2,5"]: () => {
         engine.setCurrentFrame("main");
         renderer.resize(engine.currentFrame.width, engine.currentFrame.height);
