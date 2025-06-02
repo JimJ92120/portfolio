@@ -1,5 +1,4 @@
-import Frame from "./Frame";
-import Player from "./Player";
+import Engine from "./Engine";
 
 export default class Renderer {
   private $scene: HTMLCanvasElement;
@@ -20,18 +19,16 @@ export default class Renderer {
     return this.$scene.height;
   }
 
-  renderFrame(frame: Frame): void {
+  renderEngine(engine: Engine): void {
     this.context.clearRect(0, 0, this.width, this.height);
 
-    frame.data.map((row, rowIndex) => {
+    engine.currentFrame.data.map((row, rowIndex) => {
       row.map((cellValue, columnIndex) => {
         this.renderTile([columnIndex, rowIndex], this.getTileColor(cellValue));
       });
     });
-  }
 
-  renderPlayer(player: Player): void {
-    this.renderTile(player.position, "red");
+    this.renderTile(engine.player.position, "red");
   }
 
   resize(width: number, height: number): void {
