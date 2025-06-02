@@ -35,7 +35,9 @@ body > * {
 }
 
 .controls {
-  margin-top: 1rem;
+  display: flex;
+  flex-flow: row wrap;
+  padding: 1rem;
 }
 .controls button {
   border: 1px solid black;
@@ -44,9 +46,30 @@ body > * {
 }
 
 .controls__direction {
-  /*  */
+  display: flex;
+  flex-flow: column;
+  margin-right: auto;
+}
+.direction-button {
+  width: fit-content;
+}
+.direction-button[data-direction="down"],
+.direction-button[data-direction="up"] {
+  margin-left: auto;
+  margin-right: auto;
+}
+.direction-button[data-direction="left"] {
+  margin-right: 1rem;
 }
 
 .controls__select {
-  /*  */
+  display: flex;
+  flex-flow: column wrap;
+}
+.select-button[data-select="a"] {
+  margin-top: 1rem;
+  margin-left: auto;
+}
+.select-button[data-select="b"] {
+  margin-right: 1rem;
 }

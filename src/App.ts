@@ -17,14 +17,16 @@ export default class App {
 
     <div class="controls">
       <div class="controls__direction">
-        <button>&#11164;</button>
-        <button>&#11165;</button>
-        <button>&#11166;</button>
-        <button>&#11167;</button>
+        <button class="direction-button" data-direction="up">&#11165;</button>
+        <div>
+          <button class="direction-button" data-direction="left">&#11164;</button>
+          <button class="direction-button" data-direction="right">&#11166;</button>
+        </div>
+        <button class="direction-button" data-direction="down">&#11167;</button>
       </div>
       <div class="controls__select">
-        <button>A</button>
-        <button>B</button>
+        <button class="select-button" data-select="a">A</button>
+        <button class="select-button" data-select="b">B</button>
       </div>
     </div>
   `;
