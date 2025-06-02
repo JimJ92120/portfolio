@@ -55,6 +55,19 @@ export default class Renderer {
       this.tileSize[1]
     );
   }
+  renderBackground(
+    image: HTMLImageElement,
+    width: number,
+    height: number
+  ): void {
+    this.context.drawImage(
+      image,
+      0,
+      0,
+      width * this.tileSize[0],
+      height * this.tileSize[1]
+    );
+  }
 
   private getTileColor(cellValue: number): string {
     switch (cellValue) {

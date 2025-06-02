@@ -23,6 +23,10 @@ module.exports = {
         use: "ts-loader",
         exclude: [/node_modules/, /lib/],
       },
+      {
+        test: /\.(png)$/i,
+        type: "asset/resource",
+      },
     ],
   },
   resolve: {

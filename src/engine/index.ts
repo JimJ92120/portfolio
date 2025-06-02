@@ -9,6 +9,7 @@ export default class Engine {
   frames: FrameRecord;
   currentFrameKey: string;
   player: Player;
+  assets: { [key: string]: HTMLImageElement } = {};
 
   constructor(renderer: Renderer, frames: FrameRecord) {
     this.renderer = renderer;
@@ -18,8 +19,31 @@ export default class Engine {
     this.setCurrentFrame("main");
   }
 
+  async loadAssets(): Promise<HTMLImageElement[]> {
+    return await Promise.all(
+      Object.keys(this.frames).map(
+        (frameKey) =>
+          new Promise((resolve) => {
+            this.assets[frameKey] = new Image();
+            this.assets[frameKey].src = this.frames[frameKey].backgroundUrl;
+
+            this.assets[frameKey].addEventListener("load", () => {
+              console.log(`${frameKey} image loaded`);
+
+              return resolve(this.assets[frameKey]);
+            });
+          }) as Promise<HTMLImageElement>
+      )
+    );
+  }
+
   render() {
     this.renderer.renderData(this.currentFrame.data);
+    this.renderer.renderBackground(
+      this.assets[this.currentFrameKey],
+      this.currentFrame.width,
+      this.currentFrame.height
+    );
     this.renderer.renderTile(this.player.position, "red");
   }
 

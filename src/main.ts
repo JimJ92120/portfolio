@@ -8,7 +8,7 @@ import Engine from "./engine";
 import frameRecord from "./frames";
 import config from "./config";
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   const app = new App(document.querySelector("#app")!);
   app.render();
 
@@ -19,6 +19,10 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   const engine = new Engine(renderer, frameRecord);
+
+  await engine.loadAssets();
+  engine.render();
+
   const moveEventCallback = (directionKey: string): void => {
     let direction: [number, number] = [0, 0]; // [x, y]
 
@@ -44,8 +48,6 @@ document.addEventListener("DOMContentLoaded", () => {
       engine.movePlayer(direction) && engine.render();
     }
   };
-
-  engine.render();
 
   // events
   document.addEventListener("keyup", (event: KeyboardEvent) => {

@@ -9,15 +9,18 @@ export default class Frame {
   data: number[][];
   actions: FrameActionRecord;
   initialPosition: [number, number];
+  backgroundUrl: string;
 
   constructor(
     data: number[][],
     actions: FrameActionRecord,
-    initialPosition: [number, number]
+    initialPosition: [number, number],
+    backgroundUrl: string
   ) {
     this.data = data;
     this.actions = actions;
     this.initialPosition = initialPosition;
+    this.backgroundUrl = backgroundUrl;
   }
 
   get width(): number {
