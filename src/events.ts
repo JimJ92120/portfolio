@@ -1,4 +1,4 @@
-export function DirectionEvents(
+export function MoveEvents(
   callback: CallableFunction,
   $buttons: NodeListOf<HTMLButtonElement>
 ) {

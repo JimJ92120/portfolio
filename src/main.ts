@@ -8,7 +8,7 @@ import Engine from "./engine";
 import config from "./config";
 import frameRecord from "./frames";
 import player from "./player";
-import { DirectionEvents } from "./events";
+import { MoveEvents } from "./events";
 import { getScreenSize, moveEventCallback } from "./helpers";
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   engine.render();
 
   // events
-  DirectionEvents(
+  MoveEvents(
     (directionKey: string) => moveEventCallback(engine, directionKey),
     app.$container.querySelectorAll(".direction-button")!
   );
