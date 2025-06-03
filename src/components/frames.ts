@@ -5,6 +5,8 @@ import HomeFrameBackground from "../assets/home.png";
 import OfficeFrameBackground from "../assets/office.png";
 import GalleryFrameBackground from "../assets/gallery.png";
 
+import config from "../config";
+
 // 10 x 10 boards
 export default {
   main: new Frame(
@@ -12,16 +14,18 @@ export default {
       [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
       [1, 2, 2, 2, 1, 2, 2, 2, 2, 1],
       [1, 2, 3, 2, 1, 2, 3, 3, 2, 1],
-      [1, 1, 0, 0, 0, 0, 0, 0, 0, 1],
+      [1, 1, 0, 3, 0, 0, 0, 0, 0, 1],
       [1, 1, 0, 0, 0, 0, 0, 1, 1, 1],
       [1, 2, 2, 2, 0, 0, 0, 1, 1, 1],
       [1, 2, 3, 2, 0, 0, 0, 1, 1, 1],
-      [1, 1, 0, 0, 0, 0, 0, 1, 1, 1],
+      [1, 1, 0, 0, 3, 0, 0, 1, 1, 1],
       [1, 1, 1, 0, 0, 0, 0, 1, 1, 1],
       [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     ],
     {
+      ["4,7"]: [FrameActionType.Prompt, config.welcomeMessage],
       ["2,2"]: [FrameActionType.Load, "office"],
+      ["3,3"]: [FrameActionType.Prompt, "Office mailbox"],
       ["6,2"]: [FrameActionType.Load, "gallery"],
       ["7,2"]: [FrameActionType.Load, "gallery"],
       ["2,6"]: [FrameActionType.Load, "home"],

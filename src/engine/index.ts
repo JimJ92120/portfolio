@@ -125,18 +125,22 @@ export default class Engine {
     frameKey: string,
     promptKey: string
   ): PromptMessage | null {
-    const $content = this.$content.querySelector(
-      `[data-frame="${frameKey}"] [data-prompt="${promptKey}"]`
-    );
+    try {
+      const $content = this.$content.querySelector(
+        `[data-frame="${frameKey}"] [data-prompt="${promptKey}"]`
+      );
 
-    if (!$content) {
+      if (!$content) {
+        return null;
+      }
+
+      return {
+        title: $content.querySelector("h3")?.innerText || "",
+        message: $content.querySelector("p")?.innerText || "",
+      };
+    } catch {
       return null;
     }
-
-    return {
-      title: $content.querySelector("h3")?.innerText || "",
-      message: $content.querySelector("p")?.innerText || "",
-    };
   }
 
   private canPlayerMove(nextPosition: [number, number]): boolean {
@@ -185,9 +189,7 @@ export default class Engine {
       case FrameActionType.Prompt:
         const promptMessage = this.getPromptMessage(this.currentFrameKey, data);
 
-        if (promptMessage) {
-          this.prompt(promptMessage);
-        }
+        this.prompt(promptMessage || { title: "", message: data });
         break;
 
       default:
