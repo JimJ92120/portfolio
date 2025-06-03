@@ -3,6 +3,7 @@ type Config = {
   maxSceneSize: number;
   frameSize: [number, number];
   typeSpeed: number;
+  welcomeMessage: string;
 };
 
 export default {
@@ -10,4 +11,6 @@ export default {
   maxSceneSize: 500,
   frameSize: [10, 10],
   typeSpeed: 50,
+  welcomeMessage:
+    "Hello World!\nWelcome to my Portfolio.\n \nUse buttons or keyboard arrows to visit the town!",
 } as Config;

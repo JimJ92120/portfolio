@@ -32,8 +32,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   engine.render();
   engine.prompt({
     title: "",
-    message:
-      "Hello World!\nWelcome to my Portfolio.\nVisit the town to learn more about me!",
+    message: config.welcomeMessage,
   });
 
   // events

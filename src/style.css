@@ -24,7 +24,7 @@ body > * {
 }
 
 .scene {
-  background-color: lightblue;
+  background-color: transparent;
 }
 .container {
   position: relative;
