@@ -1,9 +1,9 @@
-import Frame, { FrameActionType } from "./engine/Frame";
+import Frame, { FrameActionType } from "../engine/Frame";
 
-import MainFrameBackground from "./assets/main.png";
-import HomeFrameBackground from "./assets/home.png";
-import OfficeFrameBackground from "./assets/office.png";
-import GalleryFrameBackground from "./assets/gallery.png";
+import MainFrameBackground from "../assets/main.png";
+import HomeFrameBackground from "../assets/home.png";
+import OfficeFrameBackground from "../assets/office.png";
+import GalleryFrameBackground from "../assets/gallery.png";
 
 // 10 x 10 boards
 export default {

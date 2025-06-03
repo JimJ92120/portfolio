@@ -6,9 +6,9 @@ import Renderer from "./engine/Renderer";
 import Engine from "./engine";
 
 import config from "./config";
-import frameRecord from "./frames";
-import player from "./player";
-import { MoveEvents } from "./events";
+import frameRecord from "./components/frames";
+import player from "./components/player";
+import { MoveEvents } from "./components/events";
 import { getScreenSize, moveEventCallback } from "./helpers";
 
 document.addEventListener("DOMContentLoaded", async () => {
