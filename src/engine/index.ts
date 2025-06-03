@@ -10,6 +10,7 @@ export default class Engine {
   currentFrameKey: string;
   player: Player;
   assets: { [key: string]: HTMLImageElement } = {};
+  isPromptShown: boolean = false;
 
   constructor(renderer: Renderer, frames: FrameRecord, player: Player) {
     this.renderer = renderer;
@@ -56,6 +57,11 @@ export default class Engine {
       this.runAction(action[0], action[1]);
     } else {
       this.player.position = nextPosition;
+
+      if (this.isPromptShown) {
+        this.renderer.hidePrompt();
+        this.isPromptShown = !this.isPromptShown;
+      }
     }
 
     this.player.direction = direction;
@@ -138,8 +144,7 @@ export default class Engine {
 
       case FrameActionType.Prompt:
         this.renderer.showPrompt(data);
-
-        setTimeout(() => this.renderer.hidePrompt(), 3000);
+        this.isPromptShown = true;
         break;
 
       default:
