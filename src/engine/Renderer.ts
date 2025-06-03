@@ -68,6 +68,15 @@ export default class Renderer {
       height * this.tileSize[1]
     );
   }
+  renderPlayer(image: HTMLImageElement, position: [number, number]): void {
+    this.context.drawImage(
+      image,
+      position[0] * this.tileSize[0],
+      position[1] * this.tileSize[1],
+      this.tileSize[0],
+      this.tileSize[1]
+    );
+  }
 
   private getTileColor(cellValue: number): string {
     switch (cellValue) {

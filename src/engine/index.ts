@@ -1,5 +1,5 @@
 import Frame, { FrameActionType } from "./Frame";
-import Player from "./Player";
+import Player, { PlayerDirection } from "./Player";
 import Renderer from "./Renderer";
 
 export type FrameRecord = { main: Frame; [key: string]: Frame };
@@ -11,30 +11,23 @@ export default class Engine {
   player: Player;
   assets: { [key: string]: HTMLImageElement } = {};
 
-  constructor(renderer: Renderer, frames: FrameRecord) {
+  constructor(renderer: Renderer, frames: FrameRecord, player: Player) {
     this.renderer = renderer;
     this.frames = frames;
-    this.player = new Player();
+    this.player = player;
 
     this.setCurrentFrame("main");
   }
 
   async loadAssets(): Promise<HTMLImageElement[]> {
-    return await Promise.all(
-      Object.keys(this.frames).map(
-        (frameKey) =>
-          new Promise((resolve) => {
-            this.assets[frameKey] = new Image();
-            this.assets[frameKey].src = this.frames[frameKey].backgroundUrl;
-
-            this.assets[frameKey].addEventListener("load", () => {
-              console.log(`${frameKey} image loaded`);
-
-              return resolve(this.assets[frameKey]);
-            });
-          }) as Promise<HTMLImageElement>
-      )
-    );
+    return await Promise.all([
+      ...Object.keys(this.frames).map((frameKey) =>
+        this.loadImage(frameKey, this.frames[frameKey].backgroundImageUrl)
+      ),
+      ...Object.keys(this.player.assets).map((assetKey: any) =>
+        this.loadImage(`player-${assetKey}`, this.player.assets[assetKey])
+      ),
+    ]);
   }
 
   render() {
@@ -44,14 +37,14 @@ export default class Engine {
       this.currentFrame.width,
       this.currentFrame.height
     );
+
     this.renderer.renderTile(this.player.position, "red");
+    this.renderer.renderPlayer(this.getPlayerAsset()!, this.player.position);
   }
 
-  movePlayer(direction: [number, number]): boolean {
-    const nextPosition: [number, number] = [
-      this.player.position[0] + direction[0],
-      this.player.position[1] + direction[1],
-    ];
+  movePlayer(direction: PlayerDirection): boolean {
+    const nextPosition: [number, number] =
+      this.getPlayerNextPosition(direction);
 
     if (!this.canPlayerMove(nextPosition)) {
       return false;
@@ -63,8 +56,9 @@ export default class Engine {
       this.runAction(action[0], action[1]);
     } else {
       this.player.position = nextPosition;
-      this.player.direction = direction;
     }
+
+    this.player.direction = direction;
 
     return true;
   }
@@ -73,6 +67,7 @@ export default class Engine {
     if (this.frames[frameKey]) {
       this.currentFrameKey = frameKey;
       this.player.position = this.currentFrame.initialPosition;
+      this.player.direction = PlayerDirection.Up;
 
       this.renderer.resize(this.currentFrame.width, this.currentFrame.height);
     }
@@ -80,6 +75,22 @@ export default class Engine {
 
   get currentFrame(): Frame {
     return this.frames[this.currentFrameKey];
+  }
+
+  private async loadImage(
+    imageKey: string,
+    imageUrl: string
+  ): Promise<HTMLImageElement> {
+    return new Promise((resolve) => {
+      this.assets[imageKey] = new Image();
+      this.assets[imageKey].src = imageUrl;
+
+      this.assets[imageKey].addEventListener("load", () => {
+        console.log(`${imageKey} image loaded`);
+
+        return resolve(this.assets[imageKey]);
+      });
+    }) as Promise<HTMLImageElement>;
   }
 
   private canPlayerMove(nextPosition: [number, number]): boolean {
@@ -134,5 +145,41 @@ export default class Engine {
       default:
         break;
     }
+  }
+
+  private getPlayerAsset(): HTMLImageElement | null {
+    switch (this.player.direction) {
+      case PlayerDirection.Up:
+        return this.assets["player-up"];
+      case PlayerDirection.Down:
+        return this.assets["player-down"];
+      case PlayerDirection.Left:
+        return this.assets["player-left"];
+      case PlayerDirection.Right:
+        return this.assets["player-right"];
+      default:
+        return null;
+    }
+  }
+
+  private getPlayerNextPosition(direction: PlayerDirection): [number, number] {
+    let nextPosition: [number, number] = [...this.player.position];
+
+    switch (direction) {
+      case PlayerDirection.Up:
+        --nextPosition[1];
+        break;
+      case PlayerDirection.Down:
+        ++nextPosition[1];
+        break;
+      case PlayerDirection.Left:
+        --nextPosition[0];
+        break;
+      case PlayerDirection.Right:
+        ++nextPosition[0];
+        break;
+    }
+
+    return nextPosition;
   }
 }

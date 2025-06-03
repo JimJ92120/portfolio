@@ -7,6 +7,8 @@ import Engine from "./engine";
 
 import frameRecord from "./frames";
 import config from "./config";
+import player from "./player";
+import { PlayerDirection } from "./engine/Player";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const app = new App(document.querySelector("#app")!);
@@ -18,33 +20,33 @@ document.addEventListener("DOMContentLoaded", async () => {
     config.tileSize
   );
 
-  const engine = new Engine(renderer, frameRecord);
+  const engine = new Engine(renderer, frameRecord, player);
 
   await engine.loadAssets();
   engine.render();
 
   const moveEventCallback = (directionKey: string): void => {
-    let direction: [number, number] = [0, 0]; // [x, y]
+    let direction: PlayerDirection | null = null;
 
     switch (directionKey) {
       case "up":
-        direction = [0, -1];
+        direction = PlayerDirection.Up;
         break;
 
       case "down":
-        direction = [0, 1];
+        direction = PlayerDirection.Down;
         break;
 
       case "left":
-        direction = [-1, 0];
+        direction = PlayerDirection.Left;
         break;
 
       case "right":
-        direction = [1, 0];
+        direction = PlayerDirection.Right;
         break;
     }
 
-    if (0 !== direction[0] || 0 !== direction[1]) {
+    if (null !== direction) {
       engine.movePlayer(direction) && engine.render();
     }
   };
