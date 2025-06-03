@@ -40,18 +40,19 @@ export default class Renderer {
       return;
     }
 
-    this.$prompt.innerText = "";
+    this.$prompt.textContent = "";
 
     if (hasTitle) {
-      this.$prompt.innerText = `${title}`;
+      this.$prompt.textContent = `${title}`;
     }
 
     if (hasMessage) {
       if (hasTitle) {
-        this.$prompt.innerText += ":\n";
+        this.$prompt.textContent += ":\n";
       }
 
-      this.type(message, this.$prompt, this.typeSpeed);
+      this.type(message.trim(), this.$prompt, this.typeSpeed);
+      // this.$prompt.textContent += message;
     }
 
     this.$prompt.classList.add("prompt--active");
@@ -116,10 +117,24 @@ export default class Renderer {
   }
 
   private type(text: string, $element: HTMLElement, speed: number): void {
-    text.split("").map((char, charIndex) => {
+    const split = text.split("\n");
+    let rowOffset = 0;
+
+    split.map((textRow, textRowIndex) => {
+      if (0 < textRowIndex) {
+        rowOffset += split[textRowIndex - 1].length;
+      }
+
       setTimeout(() => {
-        $element.innerText += char;
-      }, charIndex * speed);
+        for (let charIndex = 0; charIndex < textRow.length; charIndex++) {
+          setTimeout(() => {
+            if (0 === charIndex && 0 !== textRowIndex) {
+              $element.textContent += "\n";
+            }
+            $element.textContent += textRow[charIndex];
+          }, speed * charIndex);
+        }
+      }, speed * rowOffset);
     });
   }
 }

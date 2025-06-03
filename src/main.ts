@@ -30,6 +30,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   await engine.loadAssets();
   engine.render();
+  engine.prompt({
+    title: "",
+    message:
+      "Hello World!\nWelcome to my Portfolio.\nVisit the town to learn more about me!",
+  });
 
   // events
   MoveEvents(

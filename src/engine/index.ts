@@ -42,6 +42,19 @@ export default class Engine {
     ]);
   }
 
+  prompt(promptMessage: PromptMessage): void {
+    if (true === this.isPromptShown) {
+      console.error("prompt already shown");
+    }
+
+    this.renderer.showPrompt(promptMessage.title, promptMessage.message);
+    this.isPromptShown = true;
+  }
+  hidePrompt(): void {
+    this.renderer.hidePrompt();
+    this.isPromptShown = false;
+  }
+
   render() {
     this.renderer.renderData(this.currentFrame.data);
     this.renderer.renderBackground(
@@ -71,8 +84,7 @@ export default class Engine {
       this.player.position = nextPosition;
 
       if (this.isPromptShown) {
-        this.renderer.hidePrompt();
-        this.isPromptShown = !this.isPromptShown;
+        this.hidePrompt();
       }
     }
 
@@ -174,8 +186,7 @@ export default class Engine {
         const promptMessage = this.getPromptMessage(this.currentFrameKey, data);
 
         if (promptMessage) {
-          this.renderer.showPrompt(promptMessage.title, promptMessage.message);
-          this.isPromptShown = true;
+          this.prompt(promptMessage);
         }
         break;
 
