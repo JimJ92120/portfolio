@@ -88,3 +88,10 @@ body > * {
 .select-button[data-select="b"] {
   margin-right: 1rem;
 }
+
+@media screen and (max-width: 500px) {
+  #app {
+    margin: 0;
+    border: none;
+  }
+}
