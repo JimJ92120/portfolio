@@ -24,7 +24,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   const renderer = new Renderer(
     app.$container.querySelector(".scene")!,
     app.$container.querySelector(".prompt")!,
-    [size / config.frameSize[0], size / config.frameSize[1]]
+    [size / config.frameSize[0], size / config.frameSize[1]],
+    config.typeSpeed
   );
 
   const engine = new Engine(

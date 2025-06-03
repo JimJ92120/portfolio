@@ -109,12 +109,22 @@ export default class Engine {
     }) as Promise<HTMLImageElement>;
   }
 
-  private getPromptMessage(frameKey: string, promptKey: string): string | null {
+  private getPromptMessage(
+    frameKey: string,
+    promptKey: string
+  ): PromptMessage | null {
     const $content = this.$content.querySelector(
       `[data-frame="${frameKey}"] [data-prompt="${promptKey}"]`
     );
 
-    return $content ? $content.innerHTML.trim() : null;
+    if (!$content) {
+      return null;
+    }
+
+    return {
+      title: $content.querySelector("h3")?.innerText || "",
+      message: $content.querySelector("p")?.innerText || "",
+    };
   }
 
   private canPlayerMove(nextPosition: [number, number]): boolean {
@@ -164,7 +174,7 @@ export default class Engine {
         const promptMessage = this.getPromptMessage(this.currentFrameKey, data);
 
         if (promptMessage) {
-          this.renderer.showPrompt(promptMessage);
+          this.renderer.showPrompt(promptMessage.title, promptMessage.message);
           this.isPromptShown = true;
         }
         break;

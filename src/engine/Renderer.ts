@@ -3,15 +3,18 @@ export default class Renderer {
   private $prompt: HTMLElement;
   private context: CanvasRenderingContext2D;
   private tileSize: [number, number];
+  private typeSpeed: number;
 
   constructor(
     $scene: HTMLCanvasElement,
     $prompt: HTMLElement,
-    tileSize: [number, number]
+    tileSize: [number, number],
+    typeSpeed: number
   ) {
     this.$scene = $scene;
     this.$prompt = $prompt;
     this.tileSize = tileSize;
+    this.typeSpeed = typeSpeed;
 
     this.context = this.$scene.getContext("2d")!;
   }
@@ -29,9 +32,28 @@ export default class Renderer {
     this.$scene.height = height * this.tileSize[1];
   }
 
-  showPrompt($content: string): void {
-    this.$prompt.innerHTML = "";
-    this.$prompt.innerHTML = $content;
+  showPrompt(title: string, message: string): void {
+    const hasTitle = "" !== title;
+    const hasMessage = "" !== message;
+
+    if (!hasTitle && !hasMessage) {
+      return;
+    }
+
+    this.$prompt.innerText = "";
+
+    if (hasTitle) {
+      this.$prompt.innerText = `${title}`;
+    }
+
+    if (hasMessage) {
+      if (hasTitle) {
+        this.$prompt.innerText += ":\n";
+      }
+
+      this.type(message, this.$prompt, this.typeSpeed);
+    }
+
     this.$prompt.classList.add("prompt--active");
   }
   hidePrompt(): void {
@@ -91,5 +113,13 @@ export default class Renderer {
       default:
         return "black";
     }
+  }
+
+  private type(text: string, $element: HTMLElement, speed: number): void {
+    text.split("").map((char, charIndex) => {
+      setTimeout(() => {
+        $element.innerText += char;
+      }, charIndex * speed);
+    });
   }
 }
