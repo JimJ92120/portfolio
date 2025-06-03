@@ -31,9 +31,10 @@ body > * {
   position: absolute;
   bottom: 0;
 
-  width: calc(100% - 8px);
-  height: calc(4rem - 8px);
-  background-color: lightblue;
+  width: calc(100% - 8px - 10px);
+  height: calc(4rem - 8px - 10px);
+  background-color: white;
+  border: 5px solid black;
   text-align: left;
   padding: 4px;
 }
