@@ -29,8 +29,9 @@ export default class Renderer {
     this.$scene.height = height * this.tileSize[1];
   }
 
-  showPrompt(message: string): void {
-    this.$prompt.innerText = message;
+  showPrompt($content: string): void {
+    this.$prompt.innerHTML = "";
+    this.$prompt.innerHTML = $content;
     this.$prompt.classList.add("prompt--active");
   }
   hidePrompt(): void {

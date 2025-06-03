@@ -20,7 +20,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     config.tileSize
   );
 
-  const engine = new Engine(renderer, frameRecord, player);
+  const engine = new Engine(
+    renderer,
+    frameRecord,
+    player,
+    document.querySelector("#content")!
+  );
 
   await engine.loadAssets();
   engine.render();
@@ -47,7 +52,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     if (null !== direction) {
-      engine.movePlayer(direction) && engine.render();
+      engine.movePlayer(direction);
+      engine.render();
     }
   };
 

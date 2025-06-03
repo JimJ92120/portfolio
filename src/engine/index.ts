@@ -3,6 +3,10 @@ import Player, { PlayerDirection } from "./Player";
 import Renderer from "./Renderer";
 
 export type FrameRecord = { main: Frame; [key: string]: Frame };
+export type PromptMessage = {
+  title: string;
+  message: string;
+};
 
 export default class Engine {
   renderer: Renderer;
@@ -11,11 +15,18 @@ export default class Engine {
   player: Player;
   assets: { [key: string]: HTMLImageElement } = {};
   isPromptShown: boolean = false;
+  $content: HTMLElement;
 
-  constructor(renderer: Renderer, frames: FrameRecord, player: Player) {
+  constructor(
+    renderer: Renderer,
+    frames: FrameRecord,
+    player: Player,
+    $content: HTMLElement
+  ) {
     this.renderer = renderer;
     this.frames = frames;
     this.player = player;
+    this.$content = $content;
 
     this.setCurrentFrame("main");
   }
@@ -46,6 +57,7 @@ export default class Engine {
   movePlayer(direction: PlayerDirection): boolean {
     const nextPosition: [number, number] =
       this.getPlayerNextPosition(direction);
+    this.player.direction = direction;
 
     if (!this.canPlayerMove(nextPosition)) {
       return false;
@@ -63,8 +75,6 @@ export default class Engine {
         this.isPromptShown = !this.isPromptShown;
       }
     }
-
-    this.player.direction = direction;
 
     return true;
   }
@@ -97,6 +107,14 @@ export default class Engine {
         return resolve(this.assets[imageKey]);
       });
     }) as Promise<HTMLImageElement>;
+  }
+
+  private getPromptMessage(frameKey: string, promptKey: string): string | null {
+    const $content = this.$content.querySelector(
+      `[data-frame="${frameKey}"] [data-prompt="${promptKey}"]`
+    );
+
+    return $content ? $content.innerHTML.trim() : null;
   }
 
   private canPlayerMove(nextPosition: [number, number]): boolean {
@@ -143,8 +161,12 @@ export default class Engine {
         break;
 
       case FrameActionType.Prompt:
-        this.renderer.showPrompt(data);
-        this.isPromptShown = true;
+        const promptMessage = this.getPromptMessage(this.currentFrameKey, data);
+
+        if (promptMessage) {
+          this.renderer.showPrompt(promptMessage);
+          this.isPromptShown = true;
+        }
         break;
 
       default:

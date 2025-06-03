@@ -13,10 +13,14 @@ body > * {
   text-align: center;
 }
 
-.app {
+#app {
   border: 1px solid gray;
   margin-top: 1rem;
   padding-bottom: 1rem;
+}
+#content {
+  color: white;
+  display: none;
 }
 
 .scene {
@@ -31,15 +35,18 @@ body > * {
   position: absolute;
   bottom: 0;
 
-  width: calc(100% - 8px - 10px);
-  height: calc(4rem - 8px - 10px);
+  width: calc(100% - 10px - 10px);
+  height: calc(7em - 10px - 10px);
   background-color: white;
   border: 5px solid black;
   text-align: left;
-  padding: 4px;
+  padding: 5px;
 }
 .prompt--active {
   display: block;
+}
+.prompt * {
+  margin: 0;
 }
 
 .controls {
