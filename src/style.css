@@ -53,6 +53,7 @@ body > * {
   display: flex;
   flex-flow: row wrap;
   padding: 1rem;
+  touch-action: manipulation;
 }
 .controls button {
   border: 1px solid black;
