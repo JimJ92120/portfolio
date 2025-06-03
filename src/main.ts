@@ -14,10 +14,17 @@ document.addEventListener("DOMContentLoaded", async () => {
   const app = new App(document.querySelector("#app")!);
   app.render();
 
+  const { width, height } = window.screen;
+  let size = height <= width ? height : width;
+
+  if (config.maxSceneSize < size) {
+    size = config.maxSceneSize;
+  }
+
   const renderer = new Renderer(
     app.$container.querySelector(".scene")!,
     app.$container.querySelector(".prompt")!,
-    config.tileSize
+    [size / config.frameSize[0], size / config.frameSize[1]]
   );
 
   const engine = new Engine(
