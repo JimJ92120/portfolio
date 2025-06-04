@@ -1,9 +1,13 @@
+type Timer = ReturnType<typeof setTimeout>;
+
 export default class Renderer {
   private $scene: HTMLCanvasElement;
   private $prompt: HTMLElement;
   private context: CanvasRenderingContext2D;
   private tileSize: [number, number];
   private typeSpeed: number;
+  // to fix setInterval returning NodeJS.Timeout
+  private typingInterval: any;
 
   constructor(
     $scene: HTMLCanvasElement,
@@ -27,12 +31,22 @@ export default class Renderer {
     return this.$scene.height;
   }
 
+  private get isTyping(): boolean {
+    return 0 < Number(this.typingInterval);
+  }
+
   resize(width: number, height: number): void {
     this.$scene.width = width * this.tileSize[0];
     this.$scene.height = height * this.tileSize[1];
   }
 
   showPrompt(title: string, message: string): void {
+    if (this.isTyping) {
+      console.error("prompt is typing");
+
+      return;
+    }
+
     const hasTitle = "" !== title;
     const hasMessage = "" !== message;
 
@@ -52,12 +66,12 @@ export default class Renderer {
       }
 
       this.type(message.trim(), this.$prompt, this.typeSpeed);
-      // this.$prompt.textContent += message;
     }
 
     this.$prompt.classList.add("prompt--active");
   }
   hidePrompt(): void {
+    this.clearTypingInterval();
     this.$prompt.classList.remove("prompt--active");
   }
 
@@ -116,25 +130,35 @@ export default class Renderer {
     }
   }
 
+  private clearTypingInterval(): void {
+    clearInterval(this.typingInterval);
+    this.typingInterval = 0;
+  }
+
   private type(text: string, $element: HTMLElement, speed: number): void {
     const split = text.split("\n");
-    let rowOffset = 0;
 
-    split.map((textRow, textRowIndex) => {
-      if (0 < textRowIndex) {
-        rowOffset += split[textRowIndex - 1].length;
-      }
+    this.clearTypingInterval();
 
-      setTimeout(() => {
-        for (let charIndex = 0; charIndex < textRow.length; charIndex++) {
-          setTimeout(() => {
-            if (0 === charIndex && 0 !== textRowIndex) {
-              $element.textContent += "\n";
-            }
-            $element.textContent += textRow[charIndex];
-          }, speed * charIndex);
+    let rowIndex = 0;
+    let charIndex = 0;
+    this.typingInterval = setInterval(() => {
+      try {
+        if (0 === charIndex && 0 !== rowIndex) {
+          $element.textContent += "\n";
         }
-      }, speed * rowOffset);
-    });
+
+        $element.textContent += split[rowIndex][charIndex];
+
+        if (split[rowIndex].length <= charIndex + 1) {
+          ++rowIndex;
+          charIndex = 0;
+        } else {
+          ++charIndex;
+        }
+      } catch {
+        this.clearTypingInterval();
+      }
+    }, speed);
   }
 }
