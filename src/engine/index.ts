@@ -133,12 +133,24 @@ export default class Engine {
       if (!$content) {
         return null;
       }
+      const $message = $content.querySelectorAll(
+        `[data-prompt-content="${promptKey}"] > p`
+      );
+
+      let message = "";
+      if ($message) {
+        message = Object.keys($message)
+          .map((rowKey: any) =>
+            $message[rowKey].textContent?.replace(/\s+/g, " ").trim()
+          )
+          .join("\n");
+      }
 
       return {
-        title: $content.querySelector("h3")?.innerText || "",
-        message: $content.querySelector("p")?.innerText || "",
+        title: $content.querySelector("h3")?.textContent?.trim() || "",
+        message,
       };
-    } catch {
+    } catch (error) {
       return null;
     }
   }
